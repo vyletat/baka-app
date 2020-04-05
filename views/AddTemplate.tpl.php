@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $tplData['title']; ?></title>
 
+    <!-- Nacteni sablony s hlavickou a odkazy stranky -->
     <?php
     include ("./views/elem/HeadTemplate.tpl.php");
     ?>
@@ -22,90 +23,93 @@
 
 <div class="container">
     <!-- Form for generate one specific incident -->
-    <h1>Add specific incident</h1>
-    <form  method="get" action="">
-        <!-- Hidden input for MVC page add -->
-        <input type="hidden" name="page" value="add" />
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="name">Name of incident</label>
-                    <input type="text" class="form-control" id="name" placeholder="Type a name..." name="name">
+    <fieldset>
+        <legend>Add specific incident</legend>
+        <form  method="get" action="">
+            <!-- Hidden input for MVC page add -->
+            <input type="hidden" name="page" value="add" />
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="name">Name of incident</label>
+                        <input type="text" class="form-control" id="name" placeholder="Type a name..." name="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reproductive">Reproductive</label>
+                        <select class="form-control" id="reproductive" name="reproductive" required>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project-phase">Project phase</label>
+                        <select class="form-control" id="project-phase" name="project-phase" required>
+                            <option value="1">Production</option>
+                            <option value="2">Pilot</option>
+                            <option value="3">UAT</option>
+                            <option value="4">Certification</option>
+                            <option value="5">SIT</option>
+                            <option value="6">Internal QA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="number-of-affective-machines">Number of affective machines</label>
+                        <select class="form-control" id="number-of-affective-machines" name="number-of-affective-machines" required>
+                            <option value="1">more than 1000</option>
+                            <option value="2">101-1000</option>
+                            <option value="3">11-100</option>
+                            <option value="4">2-10</option>
+                            <option value="5">1</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="reproductive">Reproductive</label>
-                    <select class="form-control" id="reproductive" name="reproductive" required>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="urgency">Urgenci</label>
+                        <select class="form-control" id="urgency" name="urgency" required>
+                            <option value="1">Highest</option>
+                            <option value="2">High</option>
+                            <option value="3">Medium</option>
+                            <option value="4">Low</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="project-phase">Project phase</label>
-                    <select class="form-control" id="project-phase" name="project-phase" required>
-                        <option value="1">Production</option>
-                        <option value="2">Pilot</option>
-                        <option value="3">UAT</option>
-                        <option value="4">Certification</option>
-                        <option value="5">SIT</option>
-                        <option value="6">Internal QA</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="impact">Impact</label>
+                        <select class="form-control" id="impact" name="impact" required>
+                            <option value="1">Critical</option>
+                            <option value="2">Non-critical</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="number-of-affective-machines">Number of affective machines</label>
-                    <select class="form-control" id="number-of-affective-machines" name="number-of-affective-machines" required>
-                        <option value="1">more than 1000</option>
-                        <option value="2">101-1000</option>
-                        <option value="3">11-100</option>
-                        <option value="4">2-10</option>
-                        <option value="5">1</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="sla-time">SLA time</label>
+                        <input type="number" class="form-control" id="sla-time" name="sla-time" min="1" max="525600" required>
+                        <small class="form-text text-muted">Max 525 600</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expected-priority">Expected Priority</label>
+                        <select class="form-control" id="expected-priority" name="expected-priority" required>
+                            <option value="1">Very High</option>
+                            <option value="2">High</option>
+                            <option value="3">Medium</option>
+                            <option value="4">Low</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="urgency">Urgenci</label>
-                    <select class="form-control" id="urgency" name="urgency" required>
-                        <option value="1">Highest</option>
-                        <option value="2">High</option>
-                        <option value="3">Medium</option>
-                        <option value="4">Low</option>
-                    </select>
-                </div>
+            <button type="submit" class="btn btn-success col-sm-3" id="add-incident-button"><i class="fas fa-plus"></i> Add</button>
+        </form>
+    </fieldset>
 
-                <div class="form-group">
-                    <label for="impact">Impact</label>
-                    <select class="form-control" id="impact" name="impact" required>
-                        <option value="1">Critical</option>
-                        <option value="2">Non-critical</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="sla-time">SLA time</label>
-                    <input type="number" class="form-control" id="sla-time" name="sla-time" min="1" max="525600" required>
-                    <small class="form-text text-muted">Max 525 600</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="expected-priority">Expected Priority</label>
-                    <select class="form-control" id="expected-priority" name="expected-priority" required>
-                        <option value="1">Very High</option>
-                        <option value="2">High</option>
-                        <option value="3">Medium</option>
-                        <option value="4">Low</option>
-                    </select>
-                </div>
-
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-success col-sm-3" id="add-incident-button"><i class="fas fa-plus"></i> Add</button>
-    </form>
-
+    <!-- Zobrazeni alertu o stavu formulare -->
     <?php
     if (isset($tplData['add_status'])) {
         if ($tplData['add_status'] == true) {
@@ -128,20 +132,23 @@
     ?>
 
     <!-- Form for generating many random incidents data -->
-    <h1 id="h1-generate">Generate random incidents</h1>
-    <form action="" method="get">
-        <!-- Hidden input for MVC page add -->
-        <input type="hidden" name="page" value="add" />
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="generator-number">Number of incidents you can generate</label>
-                <input type="number" min="1" max="100" class="form-control" id="generator-number" value="1" name="generate-number">
-                <small class="form-text text-muted">Max 100</small>
+    <fieldset>
+        <legend>Generate random incidents</legend>
+        <form action="" method="get">
+            <!-- Hidden input for MVC page add -->
+            <input type="hidden" name="page" value="add" />
+            <div class="col-sm-6 row">
+                <div class="form-group">
+                    <label for="generator-number">Number of incidents you can generate</label>
+                    <input type="number" min="1" max="100" class="form-control" id="generator-number" value="1" name="generate-number">
+                    <small class="form-text text-muted">Max 100</small>
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-success col-sm-3" id="generate-incident-button"><i class="fas fa-database"></i> Generate</button>
-    </form>
+            <button type="submit" class="btn btn-success col-sm-3" id="generate-incident-button"><i class="fas fa-database"></i> Generate</button>
+        </form>
+    </fieldset>
 
+    <!-- Zobrazeni alertu o stavu formulare -->
     <?php
     if (isset($tplData['add_generate_status'])) {
         if ($tplData['add_generate_status'] == true) {
@@ -165,6 +172,8 @@
 
 </div>
 </body>
+
+<!-- Nacteni sablony se zápatím stránky. -->
 <?php
 include ("./views/elem/FooterTemplate.tml.php");
 ?>

@@ -3,7 +3,7 @@
 require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
 
 /**
- * Ovladac zajistujici vypsani uvodni stranky.
+ * Ovladac zajistujici vypsani stránky s grafy.
  */
 class ChartsController implements IController {
 
@@ -21,9 +21,11 @@ class ChartsController implements IController {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech dat pro grafy z databáze.
+     *
+     * @return array    Pole s výsledky pro grafy.
      */
-    function getData() {
+    function getData():array {
         $urgency = $this->db->numberOfUrgency();
         $impact = $this->db->numberOfImpact();
         $numberOfAffectiveMachine = $this->db->numberOfNumberOfAffectiveMachine();
@@ -53,6 +55,12 @@ class ChartsController implements IController {
         return (array($values, $keys, $elements));
     }
 
+    /**
+     * Vratí obsah stránky s grafy.
+     *
+     * @param string $pageTitle     Název stránky.
+     * @return string               Výpis v šabloně.
+     */
     public function show(string $pageTitle):string {
         //// vsechna data sablony budou globalni
         global $tplData;

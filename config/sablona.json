@@ -1,0 +1,46 @@
+{
+  "urgency": {
+    "weight": 0,
+    "attributes": {
+      "highest": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "number_of_affective_machines": {
+    "weight": 0,
+    "attributes": {
+      "more_than_1000": 0,
+      "101-1000": 0,
+      "11-100": 0,
+      "2-10": 0,
+      "one": 0
+    }
+},
+  "impact": {
+    "weight": 0,
+    "attributes": {
+      "critical": 0,
+      "non-critical": 0
+    }
+  },
+  "project_phase": {
+    "weight": 0,
+    "attributes": {
+      "production": 0,
+      "pilot": 0,
+      "certification": 0,
+      "uat": 0,
+      "sit": 0,
+      "internal_qa": 0
+    }
+  },
+  "reproducibility": {
+    "weight": 0,
+    "attributes": {
+      "yes": 0,
+      "no": 0
+    }
+  }
+}

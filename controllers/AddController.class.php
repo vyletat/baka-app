@@ -3,7 +3,7 @@
 require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
 
 /**
- * Ovladac zajistujici vypsani uvodni stranky.
+ * Ovladac zajistujici vypsani stránky s přidáním incidentů.
  */
 class AddController implements IController {
 
@@ -20,14 +20,14 @@ class AddController implements IController {
     }
 
     /**
-     * Funkce sluzici pro nahodne genervani stringu.
+     * Funkce sloužící pro náhodné generování stringu.
      *
-     * @param int $length
-     * @return string
+     * @param int $length   Délka řetězce, který chcete vygenerovat.
+     * @return string       Vygenerovaný řetězec.
      *
      * https://stackoverflow.com/questions/4356289/php-random-string-generator
      */
-    function generateRandomString($length = 10) {
+    function generateRandomString(int $length = 10):string {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -38,20 +38,22 @@ class AddController implements IController {
     }
 
     /**
-     * @param int $number
-     * @return string
+     * Metoda pro generování současného času s pořadovým číslem.
+     *
+     * @param int $number   Pořadové číslo, které se vypíše vedle času.
+     * @return string       Řetězec s datumem a pořadovým číslem.
      */
-    function generateDateAndNumber(int $number) {
+    function generateDateAndNumber(int $number = 1):string {
         return date('d-M-Y-H:i') . "#" . $number;
     }
 
     /**
-     * Funkce slouzici pro generovani incidentu s nahodnymi hodnotami.
+     * Funkce sloužící pro generování incidentu s náhodnými hodnotami.
      *
-     * @param int $number
-     * @return array
+     * @param int $number   Počet incidentů, kolik se jich má vygenerovat.
+     * @return array        Pole s vygenerovanými incidenty.
      */
-    public function generateRandomIncident(int $number = 1) {
+    public function generateRandomIncident(int $number = 1):array {
         $incidents = array();
         for ($i = 0; $i < $number; $i++) {
             $incident = array("name"=>$this->generateDateAndNumber($i+1), "sla-time"=>rand(1, 250), "urgency"=>rand(1, 4), "reproductive"=>rand(1, 2), "project-phase"=>rand(1, 6), "number-of-affective-machines"=>rand(1, 5), "impact"=>rand(1, 2));
@@ -63,8 +65,12 @@ class AddController implements IController {
     //osetreni
     //1 - zjisteni, jestli jsou v URL
     //2 - osetreni vstupu
-
-    function isSetAllParams() {
+    /**
+     *
+     *
+     * @return bool
+     */
+    function isSetAllParams():bool {
         $statement = false;
         //required params
         if (isset($_GET['reproductive']) && isset($_GET['sla-time']) && isset($_GET['urgency']) && isset($_GET['project-phase']) && isset($_GET['umber-of-affective-machines']) && isset($_GET['impact']) && isset($_GET['expected-priority'])) {
@@ -73,7 +79,12 @@ class AddController implements IController {
         return $statement;
     }
 
-    function paramsValidation() {
+    /**
+     *
+     *
+     * @return array
+     */
+    function paramsValidation():array {
         if ($this->isSetAllParams()) {
             if (isset($_GET['name'])) {
                 $name = $this->test_input($_GET['name']);
@@ -100,18 +111,23 @@ class AddController implements IController {
     }
 
     /**
-     * @param $data
-     * @return string
+     * Metoda pro ošetření textových vstupních dat.
+     *
+     * @param string $data  Neošetřená data.
+     * @return string       Řetězec očetřených dat.
      *
      * https://www.w3schools.com/php/php_form_validation.asp
      */
-    function test_input($data) {
+    function test_input(string $data):string {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
     }
 
+    /**
+     *
+     */
     function addAllParams() {
         if (isset($_GET['name'])) {
             $ok = $this->db->addIncident($_GET['name'], intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), 1);
@@ -121,9 +137,10 @@ class AddController implements IController {
     }
 
     /**
-     * Vrati obsah uvodni stranky.
-     * @param string $pageTitle     Nazev stranky.
-     * @return string               Vypis v sablone.
+     * Vratí obsah uvodní stránky.
+     *
+     * @param string $pageTitle     Název stránky.
+     * @return string               Výpis v šabloně.
      */
     public function show(string $pageTitle):string {
         //// vsechna data sablony budou globalni

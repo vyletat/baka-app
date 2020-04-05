@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $tplData['title']; ?></title>
 
+    <!-- Nacteni sablony s hlavickou a odkazy stranky -->
     <?php
     include ("./views/elem/HeadTemplate.tpl.php");
     ?>
@@ -40,12 +41,14 @@
     </form>
 
     <h1 id="h1-result-table">Table with results</h1>
+    <!-- Vypsani tabulky s daty -->
     <?php
     if(array_key_exists('table', $tplData)) {
         echo $tplData['table'];
     }
     ?>
 
+    <!-- Script pro nacteni scrollX pro tabulku -->
     <script>
         $(document).ready( function () {
             $('#table-methods').DataTable({
@@ -55,6 +58,8 @@
     </script>
 </div>
 </body>
+
+<!-- Nacteni sablony se zápatím stránky. -->
 <?php
 include ("./views/elem/FooterTemplate.tml.php");
 ?>

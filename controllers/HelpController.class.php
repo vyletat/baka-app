@@ -3,10 +3,16 @@
 require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
 
 /**
- * Ovladac zajistujici vypsani uvodni stranky.
+ * Ovladac zajistujici vypsani stránky s nápovědou.
  */
 class HelpController implements IController {
 
+    /**
+     * Vratí obsah stránky s infimacemi.
+     *
+     * @param string $pageTitle     Název stránky.
+     * @return string               Výpis v šabloně.
+     */
     public function show(string $pageTitle):string {
         //// vsechna data sablony budou globalni
         global $tplData;

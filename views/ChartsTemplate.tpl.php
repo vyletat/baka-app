@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $tplData['title']; ?></title>
 
+    <!-- Nacteni sablony s hlavickou a odkazy stranky -->
     <?php
     include ("./views/elem/HeadTemplate.tpl.php");
     ?>
@@ -90,6 +91,8 @@
 </script>
 
 </body>
+
+<!-- Nacteni sablony se zápatím stránky. -->
 <?php
 include ("./views/elem/FooterTemplate.tml.php");
 ?>

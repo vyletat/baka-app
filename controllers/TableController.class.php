@@ -3,7 +3,7 @@
 require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
 
 /**
- * Ovladac zajistujici vypsani uvodni stranky.
+ * Ovladac zajistujici vypsani stránky s tabulkou.
  */
 class TableController implements IController {
 
@@ -19,7 +19,13 @@ class TableController implements IController {
         $this->db = new MyDatabase();
     }
 
-    function createTable($incidents) {
+    /**
+     * Metoda pro vytvoření tabulky s hodnotami o incidentech.
+     *
+     * @param $incidents    Pole s daty o incidentech.
+     * @return string       Výpis tabulky v šabloně.
+     */
+    function createTable(array $incidents):string {
         $heads = array("ID", "Name", "SLA Time", "Impact", "Urgency", "Project Phase", "Number of Affective Machines", "Reproductive", "Expected Priority");
         $table = "<table id='table-incidents' class=\"table table-striped\"><thead class=\"thead-dark\"><tr>";
         foreach ($heads as $head) {
@@ -37,6 +43,33 @@ class TableController implements IController {
         return $table;
     }
 
+    /**
+     *
+     *
+     * @param string $deteleString
+     * @return array
+     */
+    function splitDelete(string $deteleString):array {
+        $idDelete = [];
+        $deleteArray = explode(",", $deteleString);
+        foreach ($deleteArray as $string) {
+            if (strpos($string, '-')) {
+                $between = explode(',', $string);
+                for ($i = $between[0]; $i <= $between[1]; $i++) {
+                    array_push($idDelete, $i);
+                }
+            }
+            array_push($idDelete, $string);
+        }
+        return $idDelete;
+    }
+
+    /**
+     * Vratí obsah stránky s tabulkou.
+     *
+     * @param string $pageTitle     Název stránky.
+     * @return string               Výpis v šabloně.
+     */
     public function show(string $pageTitle):string {
         //// vsechna data sablony budou globalni
         global $tplData;

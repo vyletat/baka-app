@@ -21,11 +21,13 @@ class MethodsController implements IController {
     }
 
     /**
-     * @param $heads
-     * @param $incidents
-     * @return string
+     * Metoda pro vytvoření tabulky s hodnotami o incidentech.
+     *
+     * @param $heads        Pole názvů sloupečků.
+     * @param $incidents    Pole s daty o incidentech.
+     * @return string       Výpis tabulky v šabloně.
      */
-    function creteTable($heads, $incidents) {
+    function creteTable(array $heads, array $incidents):string {
         $table = "<table id='table-methods' class=\"table table-striped\"><thead class=\"thead-dark\"><tr>";
         foreach ($heads as $head) {
             $table .= "<th>$head</th>";
@@ -42,7 +44,13 @@ class MethodsController implements IController {
         return $table;
     }
 
-    function option($option) {
+    /**
+     * Metoda sloužící pro výběr a výpis tabulky.
+     *
+     * @param $option   Parametr určující jakou tabulku chceme vypsat.
+     * @return string   Výpis tabulky v šabloně.
+     */
+    function option(int $option):string {
         $heads = array("ID", "Name", "SLA Time", "Impact", "Urgency", "Project Phase", "Number of Affective Machines", "Reproductive", "Expected Priority");
         switch ($option) {
             case 1:
@@ -67,6 +75,12 @@ class MethodsController implements IController {
         return $this->creteTable($heads, $incidents);
     }
 
+    /**
+     * Vratí obsah stránky s metadami.
+     *
+     * @param string $pageTitle     Název stránky.
+     * @return string               Výpis v šabloně.
+     */
     public function show(string $pageTitle):string {
         //// vsechna data sablony budou globalni
         global $tplData;

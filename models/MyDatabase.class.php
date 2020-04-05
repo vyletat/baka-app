@@ -15,7 +15,9 @@ class MyDatabase {
     // objekt s klicem pro uzivatele ulozeneho v session
     //private $userSessionKey = "current_user";
 
-
+    /**
+     * MyDatabase constructor.
+     */
     public function __construct(){
         // inicialilzuju pripojeni k databazi - informace beru ze settings
         $this->pdo = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_NAME, DB_USER, DB_PASS);
@@ -155,9 +157,9 @@ class MyDatabase {
     }
 
     /**
+     * Metoda pro získání všech řádků i sloupců z tabulky urgency
      *
-     *
-     * @return array
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getUrgency() {
         //ziskam celou tabulku urgency
@@ -166,7 +168,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky impact
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getImpact() {
         //ziskam celou tabulku urgency
@@ -175,7 +179,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getIncident() {
         //ziskam celou tabulku urgency
@@ -184,7 +190,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky number_of_affective_machines
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getNumberOfAffectiveMachines() {
         //ziskam celou tabulku urgency
@@ -193,7 +201,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky priority
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getPriority() {
         //ziskam celou tabulku urgency
@@ -202,7 +212,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky project_phase
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getProjectPhase() {
         //ziskam celou tabulku urgency
@@ -211,7 +223,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání všech řádků i sloupců z tabulky reproductive
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function getReproductive() {
         //ziskam celou tabulku urgency
@@ -220,15 +234,17 @@ class MyDatabase {
     }
 
     /**
-     * @param string $name
-     * @param int $sla_time
-     * @param int $urgency
-     * @param int $reproductive
-     * @param int $project_phase
-     * @param int $number_of_effective_machines
-     * @param int $impact
-     * @param int $expected_priority
-     * @return bool
+     * Medota pro vložení nového incidentu do databáze
+     *
+     * @param string $name Název incidentu
+     * @param int $sla_time SLA čas incidentu
+     * @param int $urgency Naléhavost incidentu
+     * @param int $reproductive Reproduktibilita incidentu
+     * @param int $project_phase Projektová fáze incidentu
+     * @param int $number_of_effective_machines Počet ovlivněných strojů incidentu
+     * @param int $impact Dopad incidentu
+     * @param int $expected_priority Předpokládáná priorita incidentu
+     * @return bool                                 Informace, jestli vložení proběhlo v pořádku
      */
     public function addIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority) {
         // hlavicka pro vlozeni do tabulky uzivatelu
@@ -269,7 +285,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání incidentů do tabulky pro přehled bez honocení priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function incidentsToTable() {
         $query = "SELECT
@@ -297,7 +315,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání incidentů do tabulky pro přehled pro 1. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function incidentsToTableRating1() {
         $query = "SELECT
@@ -327,7 +347,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání incidentů do tabulky pro přehled pro 2. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function incidentsToTableRating2() {
         $query = "SELECT
@@ -357,7 +379,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání incidentů do tabulky pro přehled pro 3. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function incidentsToTableRating3() {
         $query = "SELECT
@@ -387,7 +411,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání incidentů do tabulky pro přehled pro všechny metody výpočtu priorit. (Číselné hodnoty jsou nahrazeny jejich významovými)
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     public function incidentsToTableAll() {
         $query = "SELECT
@@ -421,7 +447,9 @@ class MyDatabase {
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku urgency z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfUrgency() {
         $query = "SELECT
@@ -436,7 +464,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku impact z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfImpact() {
         $query = "SELECT
@@ -449,7 +479,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku number_of_affective_machines z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfNumberOfAffectiveMachine() {
         $query = "SELECT
@@ -465,7 +497,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku project_phase z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfProjectPhase() {
         $query = "SELECT
@@ -482,7 +516,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku reproductive z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfReproductive() {
         $query = "SELECT
@@ -495,7 +531,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku expected_priority z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfExpectedPriority() {
         $query = "SELECT
@@ -510,7 +548,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku priority_1 (1. metody pro výpočet priority) z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfPriority1() {
         $query = "SELECT
@@ -525,7 +565,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku priority_2 (2. metody pro výpočet priority) z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfPriority2() {
         $query = "SELECT
@@ -540,7 +582,9 @@ FROM incident";
     }
 
     /**
-     * @return array
+     * Metoda pro získání sumy jednotlivých atributů sloupečku priority_3 (3. metody pro výpočet priority) z tabulky incident
+     *
+     * @return array    Vrátí pole s výsledky dotazu.
      */
     function numberOfPriority3() {
         $query = "SELECT

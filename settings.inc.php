@@ -73,6 +73,12 @@ const WEB_PAGES = array(
         "class_name" => "HelpController",
         "title" => "Prioritization · Help",
         "name" => "Help"
+    ),
+    "visualization" => array(
+        "file_name" => "VisualizationController.class.php",
+        "class_name" => "VisualizationController",
+        "title" => "Prioritization · Visualization",
+        "name" => "Help"
     )
     // TODO - doplnit spravu uzivatelu
 );
