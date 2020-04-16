@@ -22,6 +22,11 @@
 </nav>
 
 <div class="container">
+
+    <?php
+        echo($tplData['values']);
+    ?>
+
     <!-- Form for generate one specific incident -->
     <fieldset>
         <legend>Add specific incident</legend>

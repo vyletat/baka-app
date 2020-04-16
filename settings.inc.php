@@ -28,13 +28,14 @@ define("TABLE_PRIORITY", "priority");
 
 
 //// Dostupne stranky webu ////
-
 /** Adresar kontroleru. */
 const DIRECTORY_CONTROLLERS = "./controllers";
 /** Adresar modelu. */
 const DIRECTORY_MODELS = "./models";
 /** Adresar sablon */
 const DIRECTORY_VIEWS = "./views";
+/** Adresa složky se soubory s nastavením */
+const DIRECTORY_CONFIG = "./config";
 
 /** Dostupne webove stranky. */
 const WEB_PAGES = array(
@@ -85,5 +86,6 @@ const WEB_PAGES = array(
 
 /** Klic defaultni webove stranky. */
 const DEFAULT_WEB_PAGE_KEY = "home";
+const ALL_METHODS = array();
 
 ?>
