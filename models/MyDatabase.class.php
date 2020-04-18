@@ -234,16 +234,56 @@ class MyDatabase {
     }
 
     /**
+     * Metoda pro update hodnocení incidentu.
+     *
+     * @param int $id           ID incidentu
+     * @param int $number       Číslo metody
+     * @param int $rating       Hodnocení
+     */
+    function updateRating (int $id, int $number, int $rating) {
+        $values = " `priority_"."$number"."_rating`=$rating";
+        $where = "`id`=$id";
+        $this->updateInTable(TABLE_INCIDENT, $values, $where);
+    }
+
+    /**
+     * Metoda pro update priority incidentu.
+     *
+     * @param int $id           ID incidentu
+     * @param int $number       Číslo metody
+     * @param int $priority     Priorita
+     */
+    function updatePriority (int $id, int $number, int $priority) {
+        $values = "`priority_"."$number"."`=$priority";
+        $where = "`id`=$id";
+        $this->updateInTable(TABLE_INCIDENT, $values, $where);
+    }
+
+    /**
+     * Metoda pro update hodnocení a priority incidentu.
+     *
+     * @param int $id           ID incidentu
+     * @param int $number       Číslo metody
+     * @param int $rating       Hodnocení
+     * @param int $priority     Priorita
+     */
+    function updateRatingAndPriority (int $id, int $number, int $rating, int $priority) {
+        $values = "`priority_"."$number"."`=$priority, `priority_"."$number"."_rating`=$rating";
+        $where = "`id`=$id";
+        $this->updateInTable(TABLE_INCIDENT, $values, $where);
+    }
+
+    /**
      * Medota pro vložení nového incidentu do databáze
      *
-     * @param string $name Název incidentu
-     * @param int $sla_time SLA čas incidentu
-     * @param int $urgency Naléhavost incidentu
-     * @param int $reproductive Reproduktibilita incidentu
-     * @param int $project_phase Projektová fáze incidentu
-     * @param int $number_of_effective_machines Počet ovlivněných strojů incidentu
-     * @param int $impact Dopad incidentu
-     * @param int $expected_priority Předpokládáná priorita incidentu
+     * @param string $name                          Název incidentu
+     * @param int $sla_time                         SLA čas incidentu
+     * @param int $urgency                          Naléhavost incidentu
+     * @param int $reproductive                     Reproduktibilita incidentu
+     * @param int $project_phase                    Projektová fáze incidentu
+     * @param int $number_of_effective_machines     Počet ovlivněných strojů incidentu
+     * @param int $impact                           Dopad incidentu
+     * @param int $expected_priority                Předpokládáná priorita incidentu
      * @return bool                                 Informace, jestli vložení proběhlo v pořádku
      */
     public function addIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority) {
@@ -315,75 +355,12 @@ class MyDatabase {
     }
 
     /**
-     * Metoda pro získání incidentů do tabulky pro přehled pro 1. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
-     *
-     * @return array    Vrátí pole s výsledky dotazu.
-     */
-    public function incidentsToTableRating1() {
-        $query = "SELECT
-        incident.id,
-        incident.name,
-        incident.sla_time,
-        impact.name AS 'impact',
-        urgency.name AS 'urgency',
-        project_phase.name AS 'project_phase',
-        number_of_affective_machines.name AS 'number_of_affective_machines',
-        reproductive.name AS 'reproductive',
-        priority.name AS 'expected_priority',
-        incident.priority_1_rating AS 'rating',
-        incident.priority_1 AS 'priority'
-        FROM
-        incident
-        INNER JOIN impact ON incident.impact = impact.id_IMPACT
-        INNER JOIN number_of_affective_machines ON incident.number_of_effective_machines = number_of_affective_machines.id_NUMBER_OF_AFFECTIVE_MACHINES
-        INNER JOIN priority ON incident.expected_priority = priority.idPRIORITY
-        INNER JOIN project_phase ON incident.project_phase = project_phase.id_PROJECT_PHASE
-        INNER JOIN reproductive ON incident.reproductive = reproductive.id_REPRODUCTIVE
-        INNER JOIN urgency ON incident.urgency = urgency.id_URGENCY
-        ORDER BY incident.id";
-        $obj = $this->executeQuery($query);
-        $res = $this->resultObjectToArray($obj);
-        return $res;
-    }
-
-    /**
-     * Metoda pro získání incidentů do tabulky pro přehled pro 2. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
-     *
-     * @return array    Vrátí pole s výsledky dotazu.
-     */
-    public function incidentsToTableRating2() {
-        $query = "SELECT
-        incident.id,
-        incident.name,
-        incident.sla_time,
-        impact.name AS 'impact',
-        urgency.name AS 'urgency',
-        project_phase.name AS 'project_phase',
-        number_of_affective_machines.name AS 'number_of_affective_machines',
-        reproductive.name AS 'reproductive',
-        priority.name AS 'expected_priority',
-        incident.priority_2_rating AS 'rating',
-        incident.priority_2 AS 'priority'
-        FROM
-        incident
-        INNER JOIN impact ON incident.impact = impact.id_IMPACT
-        INNER JOIN number_of_affective_machines ON incident.number_of_effective_machines = number_of_affective_machines.id_NUMBER_OF_AFFECTIVE_MACHINES
-        INNER JOIN priority ON incident.expected_priority = priority.idPRIORITY
-        INNER JOIN project_phase ON incident.project_phase = project_phase.id_PROJECT_PHASE
-        INNER JOIN reproductive ON incident.reproductive = reproductive.id_REPRODUCTIVE
-        INNER JOIN urgency ON incident.urgency = urgency.id_URGENCY
-        ORDER BY incident.id";
-        $obj = $this->executeQuery($query);
-        $res = $this->resultObjectToArray($obj);
-        return $res;
-    }
-
-    /**
      * Metoda pro získání incidentů do tabulky pro přehled pro 3. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
      *
-     * @return array    Vrátí pole s výsledky dotazu.
+     * @param int $number   Číslo metody.
+     * @return array        Vrátí pole s výsledky dotazu.
      */
-    public function incidentsToTableRating3() {
+    public function incidentsToTableRating(int $number) {
         $query = "SELECT
         incident.id,
         incident.name,
@@ -394,8 +371,8 @@ class MyDatabase {
         number_of_affective_machines.name AS 'number_of_affective_machines',
         reproductive.name AS 'reproductive',
         priority.name AS 'expected_priority',
-        incident.priority_3_rating AS 'rating',
-        incident.priority_3 AS 'priority'
+        incident.priority_" . "$number" . "_rating AS 'rating',
+        incident.priority_" . "$number" . " AS 'priority'
         FROM
         incident
         INNER JOIN impact ON incident.impact = impact.id_IMPACT
@@ -431,7 +408,15 @@ class MyDatabase {
         incident.priority_2_rating AS 'rating_2',
         incident.priority_2 AS 'priority_2',
         incident.priority_3_rating AS 'rating_3',
-        incident.priority_3 AS 'priority_3'
+        incident.priority_3 AS 'priority_3',
+        incident.priority_3_rating AS 'rating_4',
+        incident.priority_3 AS 'priority_4',
+        incident.priority_3_rating AS 'rating_5',
+        incident.priority_3 AS 'priority_5',
+        incident.priority_3_rating AS 'rating_6',
+        incident.priority_3 AS 'priority_6',
+        incident.priority_3_rating AS 'rating_7',
+        incident.priority_3 AS 'priority_7'
         FROM
         incident
         INNER JOIN impact ON incident.impact = impact.id_IMPACT
@@ -552,12 +537,12 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfPriority1() {
+    function numberOfPriority(int $number) {
         $query = "SELECT
-SUM(CASE WHEN priority_1=1 THEN 1 ELSE 0 END) AS 'very_high',
-SUM(CASE WHEN priority_1=2 THEN 1 ELSE 0 END) AS 'high',
-SUM(CASE WHEN priority_1=3 THEN 1 ELSE 0 END) AS 'medium',
-SUM(CASE WHEN priority_1=4 THEN 1 ELSE 0 END) AS 'low'
+SUM(CASE WHEN priority_" . "$number" . "=1 THEN 1 ELSE 0 END) AS 'very_high',
+SUM(CASE WHEN priority_" . "$number" . "=2 THEN 1 ELSE 0 END) AS 'high',
+SUM(CASE WHEN priority_" . "$number" . "=3 THEN 1 ELSE 0 END) AS 'medium',
+SUM(CASE WHEN priority_" . "$number" . "=4 THEN 1 ELSE 0 END) AS 'low'
 FROM incident";
         $obj = $this->executeQuery($query);
         $res = $this->resultObjectToArray($obj);
@@ -599,61 +584,6 @@ FROM incident";
     }
 
     ///////////////////  KONEC: Konkretni funkce  ////////////////////////////////////////////
-
-    ///////////////////  Sprava prihlaseni uzivatele  ////////////////////////////////////////
-
-    /**
-     * Overi, zda muse byt uzivatel prihlasen a pripadne ho prihlasi.
-     *
-     * @param string $login     Login uzivatele.
-     * @param string $heslo     Heslo uzivatele.
-     * @return bool             Byl prihlasen?
-     */
-    public function userLogin(string $login, string $heslo){
-        // ziskam uzivatele z DB - primo overuju login i heslo
-        $where = "login='$login' AND heslo='$heslo'";
-        $user = $this->selectFromTable(TABLE_UZIVATEL, $where);
-        // ziskal jsem uzivatele
-        if(count($user)){
-            // ziskal - ulozim ho do session
-            $_SESSION[$this->userSessionKey] = $user[0]; // beru prvniho nalezeneho
-            return true;
-        } else {
-            // neziskal jsem uzivatele
-            return false;
-        }
-    }
-
-    /**
-     * Odhlasi soucasneho uzivatele.
-     */
-    public function userLogout(){
-        unset($_SESSION[$this->userSessionKey]);
-    }
-
-    /**
-     * Test, zda je nyni uzivatel prihlasen.
-     *
-     * @return bool     Je prihlasen?
-     */
-    public function isUserLogged(){
-        return isset($_SESSION[$this->userSessionKey]);
-    }
-
-    /**
-     * Pokud je uzivatel prihlasen, tak vrati jeho data.
-     *
-     * @return mixed|null   Data uzivatele nebo null.
-     */
-    public function getLoggedUserData(){
-        if($this->isUserLogged()){
-            return $_SESSION[$this->userSessionKey];
-        } else {
-            return null;
-        }
-    }
-
-    ///////////////////  KONEC: Sprava prihlaseni uzivatele  ////////////////////////////////////////
 
 }
 

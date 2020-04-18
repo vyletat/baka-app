@@ -22,12 +22,22 @@
 
     <div class="container">
         <h1>Incidents table</h1>
-        <!-- Vypsani tabulky s daty -->
-        <?php
-        if(array_key_exists('table', $tplData)) {
-            echo $tplData['table'];
-        }
-        ?>
+        <div class="row">
+            <div class="col-sm-1">
+                <button class="btn btn-success" style="height: 50%" onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i class="fas fa-arrow-left"></i></button>
+            </div>
+            <div class="col-sm-10">
+                <!-- Vypsani tabulky s daty -->
+                <?php
+                if(array_key_exists('table', $tplData)) {
+                    echo $tplData['table'];
+                }
+                ?>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-warning" style="height: 50%" onclick="window.location.href = 'http://localhost/baka-app?page=methods'"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
 
         <!-- Script pro nacteni scrollX pro tabulku -->
         <script>

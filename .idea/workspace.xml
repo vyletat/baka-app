@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a99fd65-a9b0-40b6-ae22-20e2c780b680" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/method_DN.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/method_RE.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/method_ROC.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/method_RR.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/metoda_Bod.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/metoda_RS.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/metoda_Roz.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/MethodController.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/MyFileHandler.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/sablona.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/sablona.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/method_DN.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/method_DN.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/AddController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AddController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/MyDatabase.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyDatabase.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/AddTemplate.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/AddTemplate.tpl.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,7 +39,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -83,8 +69,17 @@
       <workItem from="1587040012323" duration="30000" />
       <workItem from="1587040058519" duration="35000" />
       <workItem from="1587040225503" duration="28000" />
-      <workItem from="1587040635918" duration="18085000" />
+      <workItem from="1587040635918" duration="18841000" />
+      <workItem from="1587111994500" duration="3504000" />
     </task>
+    <task id="LOCAL-00001" summary="Config, file reader">
+      <created>1587075990178</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587075990178</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,5 +97,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Config, file reader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Config, file reader" />
   </component>
 </project>

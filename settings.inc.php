@@ -58,8 +58,8 @@ const WEB_PAGES = array(
         "name" => "incidents Table"
     ),
     "methods" => array(
-        "file_name" => "MethodsController.class.php",
-        "class_name" => "MethodsController",
+        "file_name" => "CalculationController.class.php",
+        "class_name" => "CalculationController",
         "title" => "Prioritization · Methods",
         "name" => "Calculation methods"
     ),
@@ -86,6 +86,6 @@ const WEB_PAGES = array(
 
 /** Klic defaultni webove stranky. */
 const DEFAULT_WEB_PAGE_KEY = "home";
-const ALL_METHODS = array();
+const ALL_METHODS = array(1,2,3,4,5,6,7);
 
 ?>

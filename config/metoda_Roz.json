@@ -1,0 +1,74 @@
+{
+  "priority": {
+    "method": "min",
+    "normalize": false,
+    "min": 0,
+    "max": 0,
+    "scale": {
+      "very_high": 38,
+      "high": 47,
+      "medium": 58,
+      "low": 90
+    }
+  },
+  "criteria": {
+    "sla_time": {
+      "contains": true,
+      "weight": 0
+    },
+    "urgency": {
+      "contains": true,
+      "weight": 7.8,
+      "attributes": {
+        "highest": 1,
+        "high": 2,
+        "medium": 3,
+        "low": 4
+      }
+    },
+    "number_of_affective_machines": {
+      "contains": true,
+      "weight": 6.7,
+      "attributes": {
+        "more_than_1000": 1,
+        "101-1000": 2,
+        "11-100": 3,
+        "2-10": 4,
+        "one": 5
+      }
+    },
+    "impact": {
+      "contains": true,
+      "weight": 8.3,
+      "attributes": {
+        "critical": 1,
+        "non-critical": 2
+      }
+    },
+    "project_phase": {
+      "contains": true,
+      "weight": 6.8,
+      "attributes": {
+        "production": 1,
+        "pilot": 2,
+        "uat": 3,
+        "certification": 4,
+        "sit": 5,
+        "internal_qa": 6
+      }
+    },
+    "reproducibility": {
+      "contains": true,
+      "weight": 4.2,
+      "attributes": {
+        "yes": 1,
+        "no": 2
+      }
+    }
+  },
+  "other": {
+    "name": "method",
+    "method": "sum",
+    "dispersion": ""
+  }
+}

@@ -20,25 +20,58 @@
 </nav>
 <div class="container">
     <h1>Calculation methods</h1>
-    <form method="post" action="">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="calculation-method" id="all-radio" value="4" checked>
-            <label class="form-check-label" for="all-radio">All methods</label>
+    <div class="row">
+        <div class="col-sm-1">
+            <button class="btn btn-success" style="height: 100%" onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i class="fas fa-arrow-left"></i></button>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="calculation-method" id="first-radio" value="1">
-            <label class="form-check-label" for="first-radio">First method</label>
+        <div class="col-sm-8">
+            <form method="post" action="">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="all-radio" value="0" checked>
+                    <label class="form-check-label" for="all-radio">All methods</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="first-radio" value="1">
+                    <label class="form-check-label" for="first-radio">Diebold Nixdorf default method</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="second-radio" value="2">
+                    <label class="form-check-label" for="second-radio">Method rozsirena</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="third-radio" value="3">
+                    <label class="form-check-label" for="third-radio">Method bodovaci</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="forth-radio" value="4">
+                    <label class="form-check-label" for="forth-radio">Method rank sum</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="fifth-radio" value="5">
+                    <label class="form-check-label" for="fifth-radio">Method rank reciprocal</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="sixth-radio" value="6">
+                    <label class="form-check-label" for="sixth-radio">Method rank exponent</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="seventh-radio" value="7">
+                    <label class="form-check-label" for="seventh-radio">Method rank order centroid</label>
+                </div>
+                <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i> Choose</button>
+            </form>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="calculation-method" id="second-radio" value="2">
-            <label class="form-check-label" for="second-radio">Second method</label>
+        <div class="col-sm-2">
+            <form>
+                <input type="hidden" value="true" name="refresh">
+                <button type="submit" class="btn btn-warning"><i class="fas fa-redo-alt"></i>Recalculate incidents</button>
+            </form>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="calculation-method" id="third-radio" value="3">
-            <label class="form-check-label" for="third-radio">Third method</label>
+        <div class="col-sm-1">
+            <button class="btn btn-danger" style="height: 100%" onclick="window.location.href = 'http://localhost/baka-app?page=charts'"><i class="fas fa-arrow-right"></i></button>
         </div>
-        <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i> Choose</button>
-    </form>
+    </div>
+
 
     <h1 id="h1-result-table">Table with results</h1>
     <!-- Vypsani tabulky s daty -->

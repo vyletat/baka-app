@@ -32,13 +32,18 @@ class ChartsController implements IController {
         $projectPhase = $this->db->numberOfProjectPhase();
         $reproductive = $this->db->numberOfReproductive();
         $expectedPriority = $this->db->numberOfExpectedPriority();
-        $priority1 = $this->db->numberOfPriority1();
-        $priority2 = $this->db->numberOfPriority2();
-        $priority3 = $this->db->numberOfPriority3();
+        $priority1 = $this->db->numberOfPriority(1);
+        $priority2 = $this->db->numberOfPriority(2);
+        $priority3 = $this->db->numberOfPriority(3);
+        $priority4 = $this->db->numberOfPriority(4);
+        $priority5 = $this->db->numberOfPriority(5);
+        $priority6 = $this->db->numberOfPriority(6);
+        $priority7 = $this->db->numberOfPriority(7);
+
 
         //$dataset = array($urgency[0], $impact[0], $numberOfAffectiveMachine[0], $projectPhase[0], $reproductive[0], $expectedPriority[0], $priority1[0], $priority2[0], $priority3[0]);
         $dataset = array("urgency"=>$urgency[0], "impact"=>$impact[0], "number_of_affective_machine"=>$numberOfAffectiveMachine[0], "project_phase"=>$projectPhase[0],
-            "reproductive" =>$reproductive[0], "expected_priority"=>$expectedPriority[0], "priority_1"=>$priority1[0], "priority_2"=>$priority2[0], "priority_3"=>$priority3[0]);
+            "reproductive" =>$reproductive[0], "expected_priority"=>$expectedPriority[0], "priority_1"=>$priority1[0], "priority_2"=>$priority2[0], "priority_3"=>$priority3[0], "priority_4"=>$priority4[0], "priority_5"=>$priority5[0], "priority_6"=>$priority6[0], "priority_7"=>$priority7[0]);
 
         $values = array();
         foreach ($dataset as $element) {

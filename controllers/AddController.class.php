@@ -28,6 +28,18 @@ class AddController implements IController
         $this->file = new MyFileHandler();
     }
 
+    /**
+     *
+     *
+     * @param int $method
+     * @param int $sla_time
+     * @param int $urgency
+     * @param int $reproductive
+     * @param int $project_phase
+     * @param int $number_of_affective_machines
+     * @param int $impact
+     * @return int|mixed
+     */
     function calculateIncident(int $method, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
     {
         $options = $this->file->getMethodParams($method);
@@ -111,7 +123,70 @@ class AddController implements IController
                 }
                 break;
         }
+
+        //normalize
+        if ($options['priority']['normalize']) {
+            $normalizeResult = ($result - $options['priority']['min']) / ($options['priority']['max'] - $options['priority']['min']);
+            $result = $normalizeResult;
+        }
         return $result;
+    }
+
+    /**
+     *
+     *
+     * @param int $method
+     * @param $rating
+     * @return int
+     */
+    function calculatePriority(int $method, $rating)
+    {
+        $options = $this->file->getMethodParams($method);
+        switch ($options['priority']['method']) {
+            case "min":
+                if ($rating < $options['priority']['scale']['very_high']) {
+                    return 1;
+                } else {
+                    if ($rating < $options['priority']['scale']['high']) {
+                        return 2;
+                    } else {
+                        if ($rating < $options['priority']['scale']['medium']) {
+                            return 3;
+                        } else {
+                            return 4;
+                        }
+                    }
+                }
+
+            //max
+            default:
+                if ($rating > $options['priority']['scale']['high']) {
+                    return 1;
+                } else {
+                    if ($rating > $options['priority']['scale']['medium']) {
+                        return 2;
+                    } else {
+                        if ($rating > $options['priority']['scale']['low']) {
+                            return 3;
+                        } else {
+                            return 4;
+                        }
+                    }
+                }
+        }
+    }
+
+    //Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority
+    function updateAllMethodsAndPriority()
+    {
+        $allIncidents = $this->db->getIncident();
+        foreach ($allIncidents as $incident) {
+            foreach (ALL_METHODS as $method) {
+                $rating = $this->calculateIncident($method, $incident['sla_time'], $incident['urgency'], $incident['reproductive'], $incident['project_phase'], $incident['number_of_effective_machines'], $incident['impact']);
+                $priority = $this->calculatePriority($method, $rating);
+                $this->db->updateRatingAndPriority($incident['id'], $method, $rating, $priority);
+            }
+        }
     }
 
     /**
@@ -252,7 +327,10 @@ class AddController implements IController
         // nazev
         $tplData['title'] = $pageTitle;
 
-        $tplData['values'] = $this->calculateIncident(1, 2, 1, 1, 1, 1, 1);
+        // $tplData['values'] = $this->calculateIncident(1, 2, 1, 1, 1, 1, 1);
+        // $rating = $this->calculateIncident(1, 2, 2, 1, 1, 3, 2);
+        //$tplData['priority'] = $this->calculatePriority(1, $rating);
+        // $tplData['dataAll'] = $this->updateAllMethodsAndPriority();
 
         //pro add s konkretnimy hodnotami
         if (isset($_GET['reproductive'])) {

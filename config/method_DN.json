@@ -1,11 +1,21 @@
 {
   "priority": {
-    "very_high": 38,
-    "high": 47,
-    "medium": 58,
-    "low": 90
+    "method": "min",
+    "normalize": false,
+    "min": 21,
+    "max": 71,
+    "scale": {
+      "very_high": 38,
+      "high": 47,
+      "medium": 58,
+      "low": 90
+    }
   },
   "criteria": {
+    "sla_time": {
+      "contains": false,
+      "weight": 0
+    },
     "urgency": {
       "contains": true,
       "weight": 8,
