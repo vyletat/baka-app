@@ -6,7 +6,8 @@
 /**
  * Trida spravujici databazi.
  */
-class MyDatabase {
+class MyDatabase
+{
 
     // PDO objekt pro praci s databazi
     private $pdo;
@@ -18,9 +19,10 @@ class MyDatabase {
     /**
      * MyDatabase constructor.
      */
-    public function __construct(){
+    public function __construct()
+    {
         // inicialilzuju pripojeni k databazi - informace beru ze settings
-        $this->pdo = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_NAME, DB_USER, DB_PASS);
+        $this->pdo = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $this->pdo->exec("set names utf8");
         // inicializuju objekt pro praci se session - pouzito pro spravu prihlaseni uzivatele
         // pozn.: v samostatne praci vytvorte pro spravu prihlaseni uzivatele samostatnou tridu.
@@ -34,10 +36,11 @@ class MyDatabase {
     /**
      *  Provede dotaz a bud vrati jeho vysledek, nebo vrati null a vypise chybu.
      *
-     *  @param string $dotaz        SQL dotaz.
-     *  @return PDOStatement        Vysledek dotazu.
+     * @param string $dotaz SQL dotaz.
+     * @return PDOStatement        Vysledek dotazu.
      */
-    private function executeQuery(string $dotaz){
+    private function executeQuery(string $dotaz)
+    {
         // vykonam dotaz
         $res = $this->pdo->query($dotaz);
         if (!$res) {
@@ -52,10 +55,11 @@ class MyDatabase {
     /**
      *  Prevede vysledny objekt dotazu na pole ziskanych dat.
      *
-     *  @param PDOStatement $obj  Objekt s vysledky dotazu.
-     *  @return array       Pole s vysledky dotazu.
+     * @param PDOStatement $obj Objekt s vysledky dotazu.
+     * @return array       Pole s vysledky dotazu.
      */
-    private function resultObjectToArray(PDOStatement $obj){
+    private function resultObjectToArray(PDOStatement $obj)
+    {
         // projdu jednotlive radky tabulky
         /*while($row = $vystup->fetch(PDO::FETCH_ASSOC)){
             $pole[] = $row['login'].'<br>';
@@ -67,16 +71,17 @@ class MyDatabase {
     /**
      * Jednoduche cteni z prislusne DB tabulky.
      *
-     * @param string $tableName         Nazev tabulky.
-     * @param string $whereStatement    Pripadne omezeni na ziskani radek tabulky. Default "".
-     * @param string $orderByStatement  Pripadne razeni ziskanych radek tabulky. Default "".
+     * @param string $tableName Nazev tabulky.
+     * @param string $whereStatement Pripadne omezeni na ziskani radek tabulky. Default "".
+     * @param string $orderByStatement Pripadne razeni ziskanych radek tabulky. Default "".
      * @return array                    Vraci pole ziskanych radek tabulky.
      */
-    public function selectFromTable(string $tableName, string $whereStatement = "", $orderByStatement = ""):array {
+    public function selectFromTable(string $tableName, string $whereStatement = "", $orderByStatement = ""): array
+    {
         // slozim dotaz
-        $q = "SELECT * FROM ".$tableName
-            .(($whereStatement == "") ? "" : " WHERE $whereStatement")
-            .(($orderByStatement == "") ? "" : " ORDER BY $orderByStatement");
+        $q = "SELECT * FROM " . $tableName
+            . (($whereStatement == "") ? "" : " WHERE $whereStatement")
+            . (($orderByStatement == "") ? "" : " ORDER BY $orderByStatement");
         // provedu ho a vratim vysledek
         $obj = $this->executeQuery($q);
         $res = $this->resultObjectToArray($obj);
@@ -86,17 +91,18 @@ class MyDatabase {
     /**
      * Jednoduchy zapis do prislusne tabulky.
      *
-     * @param string $tableName         Nazev tabulky.
-     * @param string $insertStatement   Text s nazvy sloupcu pro insert.
-     * @param string $insertValues      Text s hodnotami pro prislusne sloupce.
+     * @param string $tableName Nazev tabulky.
+     * @param string $insertStatement Text s nazvy sloupcu pro insert.
+     * @param string $insertValues Text s hodnotami pro prislusne sloupce.
      * @return bool                     Vlozeno v poradku?
      */
-    public function insertIntoTable(string $tableName, string $insertStatement, string $insertValues):bool {
+    public function insertIntoTable(string $tableName, string $insertStatement, string $insertValues): bool
+    {
         // slozim dotaz
         $q = "INSERT INTO $tableName($insertStatement) VALUES ($insertValues)";
         // provedu ho a vratim vysledek
         $obj = $this->executeQuery($q);
-        if($obj == null){
+        if ($obj == null) {
             return false;
         } else {
             return true;
@@ -106,17 +112,18 @@ class MyDatabase {
     /**
      * Jednoducha uprava radku databazove tabulky.
      *
-     * @param string $tableName                     Nazev tabulky.
-     * @param string $updateStatementWithValues     Cela cast updatu s hodnotami.
-     * @param string $whereStatement                Cela cast pro WHERE.
+     * @param string $tableName Nazev tabulky.
+     * @param string $updateStatementWithValues Cela cast updatu s hodnotami.
+     * @param string $whereStatement Cela cast pro WHERE.
      * @return bool                                 Upraveno v poradku?
      */
-    public function updateInTable(string $tableName, string $updateStatementWithValues, string $whereStatement):bool {
+    public function updateInTable(string $tableName, string $updateStatementWithValues, string $whereStatement): bool
+    {
         // slozim dotaz
         $q = "UPDATE $tableName SET $updateStatementWithValues WHERE $whereStatement";
         // provedu ho a vratim vysledek
         $obj = $this->executeQuery($q);
-        if($obj == null){
+        if ($obj == null) {
             return false;
         } else {
             return true;
@@ -126,15 +133,16 @@ class MyDatabase {
     /**
      * Dle zadane podminky maze radky v prislusne tabulce.
      *
-     * @param string $tableName         Nazev tabulky.
-     * @param string $whereStatement    Podminka mazani.
+     * @param string $tableName Nazev tabulky.
+     * @param string $whereStatement Podminka mazani.
      */
-    public function deleteFromTable(string $tableName, string $whereStatement){
+    public function deleteFromTable(string $tableName, string $whereStatement)
+    {
         // slozim dotaz
         $q = "DELETE FROM $tableName WHERE $whereStatement";
         // provedu ho a vratim vysledek
         $obj = $this->executeQuery($q);
-        if($obj == null){
+        if ($obj == null) {
             return false;
         } else {
             return true;
@@ -150,7 +158,8 @@ class MyDatabase {
      *
      * @return array    Pole se vsemi uzivateli.
      */
-    public function getAllUsers(){
+    public function getAllUsers()
+    {
         // ziskam vsechny uzivatele z DB razene dle ID a vratim je
         $users = $this->selectFromTable(TABLE_UZIVATEL, "", "id_uzivatel");
         return $users;
@@ -161,9 +170,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getUrgency() {
+    public function getUrgency()
+    {
         //ziskam celou tabulku urgency
-        $uregency = $this->selectFromTable(TABLE_URGENCY,"","");
+        $uregency = $this->selectFromTable(TABLE_URGENCY, "", "");
         return $uregency;
     }
 
@@ -172,9 +182,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getImpact() {
+    public function getImpact()
+    {
         //ziskam celou tabulku urgency
-        $impact = $this->selectFromTable(TABLE_IMPACT,"","");
+        $impact = $this->selectFromTable(TABLE_IMPACT, "", "");
         return $impact;
     }
 
@@ -183,9 +194,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getIncident() {
+    public function getIncident()
+    {
         //ziskam celou tabulku urgency
-        $incident = $this->selectFromTable(TABLE_INCIDENT,"","");
+        $incident = $this->selectFromTable(TABLE_INCIDENT, "", "");
         return $incident;
     }
 
@@ -194,9 +206,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getNumberOfAffectiveMachines() {
+    public function getNumberOfAffectiveMachines()
+    {
         //ziskam celou tabulku urgency
-        $number_of_affective_machines = $this->selectFromTable(TABLE_NUMBER_OF_AFFECTIVE_MACHINES,"","");
+        $number_of_affective_machines = $this->selectFromTable(TABLE_NUMBER_OF_AFFECTIVE_MACHINES, "", "");
         return $number_of_affective_machines;
     }
 
@@ -205,9 +218,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getPriority() {
+    public function getPriority()
+    {
         //ziskam celou tabulku urgency
-        $priority = $this->selectFromTable(TABLE_PRIORITY,"","");
+        $priority = $this->selectFromTable(TABLE_PRIORITY, "", "");
         return $priority;
     }
 
@@ -216,9 +230,10 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getProjectPhase() {
+    public function getProjectPhase()
+    {
         //ziskam celou tabulku urgency
-        $project_phase = $this->selectFromTable(TABLE_PROJECT_PHASE,"","");
+        $project_phase = $this->selectFromTable(TABLE_PROJECT_PHASE, "", "");
         return $project_phase;
     }
 
@@ -227,21 +242,23 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getReproductive() {
+    public function getReproductive()
+    {
         //ziskam celou tabulku urgency
-        $reproductive = $this->selectFromTable(TABLE_REPRODUCTIVE,"","");
+        $reproductive = $this->selectFromTable(TABLE_REPRODUCTIVE, "", "");
         return $reproductive;
     }
 
     /**
      * Metoda pro update hodnocení incidentu.
      *
-     * @param int $id           ID incidentu
-     * @param int $number       Číslo metody
-     * @param int $rating       Hodnocení
+     * @param int $id ID incidentu
+     * @param int $number Číslo metody
+     * @param int $rating Hodnocení
      */
-    function updateRating (int $id, int $number, int $rating) {
-        $values = " `priority_"."$number"."_rating`=$rating";
+    function updateRating(int $id, int $number, int $rating)
+    {
+        $values = " `priority_" . "$number" . "_rating`=$rating";
         $where = "`id`=$id";
         $this->updateInTable(TABLE_INCIDENT, $values, $where);
     }
@@ -249,12 +266,13 @@ class MyDatabase {
     /**
      * Metoda pro update priority incidentu.
      *
-     * @param int $id           ID incidentu
-     * @param int $number       Číslo metody
-     * @param int $priority     Priorita
+     * @param int $id ID incidentu
+     * @param int $number Číslo metody
+     * @param int $priority Priorita
      */
-    function updatePriority (int $id, int $number, int $priority) {
-        $values = "`priority_"."$number"."`=$priority";
+    function updatePriority(int $id, int $number, int $priority)
+    {
+        $values = "`priority_" . "$number" . "`=$priority";
         $where = "`id`=$id";
         $this->updateInTable(TABLE_INCIDENT, $values, $where);
     }
@@ -262,13 +280,14 @@ class MyDatabase {
     /**
      * Metoda pro update hodnocení a priority incidentu.
      *
-     * @param int $id           ID incidentu
-     * @param int $number       Číslo metody
-     * @param int $rating       Hodnocení
-     * @param int $priority     Priorita
+     * @param int $id ID incidentu
+     * @param int $number Číslo metody
+     * @param int $rating Hodnocení
+     * @param int $priority Priorita
      */
-    function updateRatingAndPriority (int $id, int $number, $rating, int $priority) {
-        $values = "`priority_"."$number"."`=$priority, `priority_"."$number"."_rating`=$rating";
+    function updateRatingAndPriority(int $id, int $number, $rating, int $priority)
+    {
+        $values = "`priority_" . "$number" . "`=$priority, `priority_" . "$number" . "_rating`=$rating";
         $where = "`id`=$id";
         $this->updateInTable(TABLE_INCIDENT, $values, $where);
     }
@@ -276,17 +295,18 @@ class MyDatabase {
     /**
      * Medota pro vložení nového incidentu do databáze
      *
-     * @param string $name                          Název incidentu
-     * @param int $sla_time                         SLA čas incidentu
-     * @param int $urgency                          Naléhavost incidentu
-     * @param int $reproductive                     Reproduktibilita incidentu
-     * @param int $project_phase                    Projektová fáze incidentu
-     * @param int $number_of_effective_machines     Počet ovlivněných strojů incidentu
-     * @param int $impact                           Dopad incidentu
-     * @param int $expected_priority                Předpokládáná priorita incidentu
+     * @param string $name Název incidentu
+     * @param int $sla_time SLA čas incidentu
+     * @param int $urgency Naléhavost incidentu
+     * @param int $reproductive Reproduktibilita incidentu
+     * @param int $project_phase Projektová fáze incidentu
+     * @param int $number_of_effective_machines Počet ovlivněných strojů incidentu
+     * @param int $impact Dopad incidentu
+     * @param int $expected_priority Předpokládáná priorita incidentu
      * @return bool                                 Informace, jestli vložení proběhlo v pořádku
      */
-    public function addIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority) {
+    public function addIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority)
+    {
         // hlavicka pro vlozeni do tabulky uzivatelu
         $insertStatement = "name, sla_time, urgency, reproductive, project_phase, number_of_effective_machines, impact, expected_priority";
         // hodnoty pro vlozeni do tabulky uzivatelu
@@ -295,7 +315,8 @@ class MyDatabase {
         return $this->insertIntoTable(TABLE_INCIDENT, $insertStatement, $insertValues);
     }
 
-    public function updateIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority) {
+    public function updateIncident(string $name, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_effective_machines, int $impact, int $expected_priority)
+    {
         // hlavicka pro vlozeni do tabulky uzivatelu
         $insertStatement = "name, sla_time, urgency, reproductive, project_phase, number_of_effective_machines, impact, expected_priority";
         // hodnoty pro vlozeni do tabulky uzivatelu
@@ -307,15 +328,16 @@ class MyDatabase {
     /**
      * Uprava konkretniho uzivatele v databazi.
      *
-     * @param int $idUzivatel   ID upravovaneho uzivatele.
-     * @param string $login     Login.
-     * @param string $heslo     Heslo.
-     * @param string $jmeno     Jmeno.
-     * @param string $email     E-mail.
-     * @param int $idPravo      ID prava.
+     * @param int $idUzivatel ID upravovaneho uzivatele.
+     * @param string $login Login.
+     * @param string $heslo Heslo.
+     * @param string $jmeno Jmeno.
+     * @param string $email E-mail.
+     * @param int $idPravo ID prava.
      * @return bool             Bylo upraveno?
      */
-    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo){
+    public function updateUser(int $idUzivatel, string $login, string $heslo, string $jmeno, string $email, int $idPravo)
+    {
         // slozim cast s hodnotami
         $updateStatementWithValues = "login='$login', heslo='$heslo', jmeno='$jmeno', email='$email', id_pravo='$idPravo'";
         // podminka
@@ -329,7 +351,8 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function incidentsToTable() {
+    public function incidentsToTable()
+    {
         $query = "SELECT
         incident.id,
         incident.name,
@@ -357,10 +380,11 @@ class MyDatabase {
     /**
      * Metoda pro získání incidentů do tabulky pro přehled pro 3. metodu výpočtu priority. (Číselné hodnoty jsou nahrazeny jejich významovými)
      *
-     * @param int $number   Číslo metody.
+     * @param int $number Číslo metody.
      * @return array        Vrátí pole s výsledky dotazu.
      */
-    public function incidentsToTableRating(int $number) {
+    public function incidentsToTableRating(int $number)
+    {
         $query = "SELECT
         incident.id,
         incident.name,
@@ -392,7 +416,8 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function incidentsToTableAll() {
+    public function incidentsToTableAll()
+    {
         $query = "SELECT
         incident.id,
         incident.name,
@@ -436,7 +461,8 @@ class MyDatabase {
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfUrgency() {
+    function numberOfUrgency()
+    {
         $query = "SELECT
 SUM(CASE WHEN urgency=1 THEN 1 ELSE 0 END) AS 'highest',
 SUM(CASE WHEN urgency=2 THEN 1 ELSE 0 END) AS 'high',
@@ -453,7 +479,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfImpact() {
+    function numberOfImpact()
+    {
         $query = "SELECT
 SUM(CASE WHEN impact=1 THEN 1 ELSE 0 END) AS 'critical',
 SUM(CASE WHEN impact=2 THEN 1 ELSE 0 END) AS 'non-critical'
@@ -468,7 +495,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfNumberOfAffectiveMachine() {
+    function numberOfNumberOfAffectiveMachine()
+    {
         $query = "SELECT
 SUM(CASE WHEN `number_of_effective_machines`=1 THEN 1 ELSE 0 END) AS 'more_than_1000',
 SUM(CASE WHEN `number_of_effective_machines`=2 THEN 1 ELSE 0 END) AS '101-1000',
@@ -486,7 +514,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfProjectPhase() {
+    function numberOfProjectPhase()
+    {
         $query = "SELECT
 SUM(CASE WHEN project_phase=1 THEN 1 ELSE 0 END) AS 'production',
 SUM(CASE WHEN project_phase=2 THEN 1 ELSE 0 END) AS 'pilot',
@@ -505,7 +534,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfReproductive() {
+    function numberOfReproductive()
+    {
         $query = "SELECT
 SUM(CASE WHEN reproductive=1 THEN 1 ELSE 0 END) AS 'yes',
 SUM(CASE WHEN reproductive=2 THEN 1 ELSE 0 END) AS 'no'
@@ -520,7 +550,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfExpectedPriority() {
+    function numberOfExpectedPriority()
+    {
         $query = "SELECT
 SUM(CASE WHEN expected_priority=1 THEN 1 ELSE 0 END) AS 'very_high',
 SUM(CASE WHEN expected_priority=2 THEN 1 ELSE 0 END) AS 'high',
@@ -537,7 +568,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfPriority(int $number) {
+    function numberOfPriority(int $number)
+    {
         $query = "SELECT
 SUM(CASE WHEN priority_" . "$number" . "=1 THEN 1 ELSE 0 END) AS 'very_high',
 SUM(CASE WHEN priority_" . "$number" . "=2 THEN 1 ELSE 0 END) AS 'high',
@@ -554,7 +586,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfPriority2() {
+    function numberOfPriority2()
+    {
         $query = "SELECT
 SUM(CASE WHEN priority_2=1 THEN 1 ELSE 0 END) AS 'very_high',
 SUM(CASE WHEN priority_2=2 THEN 1 ELSE 0 END) AS 'high',
@@ -571,7 +604,8 @@ FROM incident";
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    function numberOfPriority3() {
+    function numberOfPriority3()
+    {
         $query = "SELECT
 SUM(CASE WHEN priority_3=1 THEN 1 ELSE 0 END) AS 'very_high',
 SUM(CASE WHEN priority_3=2 THEN 1 ELSE 0 END) AS 'high',
@@ -581,6 +615,12 @@ FROM incident";
         $obj = $this->executeQuery($query);
         $res = $this->resultObjectToArray($obj);
         return $res;
+    }
+
+    function deleteIncident($id)
+    {
+        $where = "`id`=$id";
+        $this->deleteFromTable(TABLE_INCIDENT, $where);
     }
 
     ///////////////////  KONEC: Konkretni funkce  ////////////////////////////////////////////

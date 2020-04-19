@@ -43,7 +43,7 @@ class ChartsController implements IController {
 
         //$dataset = array($urgency[0], $impact[0], $numberOfAffectiveMachine[0], $projectPhase[0], $reproductive[0], $expectedPriority[0], $priority1[0], $priority2[0], $priority3[0]);
         $dataset = array("urgency"=>$urgency[0], "impact"=>$impact[0], "number_of_affective_machine"=>$numberOfAffectiveMachine[0], "project_phase"=>$projectPhase[0],
-            "reproductive" =>$reproductive[0], "expected_priority"=>$expectedPriority[0], "priority_1"=>$priority1[0], "priority_2"=>$priority2[0], "priority_3"=>$priority3[0], "priority_4"=>$priority4[0], "priority_5"=>$priority5[0], "priority_6"=>$priority6[0], "priority_7"=>$priority7[0]);
+            "reproductive" =>$reproductive[0], "expected_priority"=>$expectedPriority[0], "priority_method_DN"=>$priority1[0], "priority_method_Roz"=>$priority2[0], "priority_method_Bod"=>$priority3[0], "priority_method_RS"=>$priority4[0], "priority_method_RR"=>$priority5[0], "priority_method_RE"=>$priority6[0], "priority_method_ROC"=>$priority7[0]);
 
         $values = array();
         foreach ($dataset as $element) {

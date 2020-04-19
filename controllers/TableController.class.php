@@ -43,6 +43,12 @@ class TableController implements IController {
         return $table;
     }
 
+    function deleteIncidents($arrayId) {
+        foreach ($arrayId as $id) {
+            $this->db->deleteIncident($id);
+        }
+    }
+
     /**
      *
      *
@@ -50,14 +56,15 @@ class TableController implements IController {
      * @return array
      */
     function splitDelete(string $deteleString):array {
-        $idDelete = [];
+        $idDelete = array();
         $deleteArray = explode(",", $deteleString);
         foreach ($deleteArray as $string) {
             if (strpos($string, '-')) {
-                $between = explode(',', $string);
+                $between = explode('-', $string);
                 for ($i = $between[0]; $i <= $between[1]; $i++) {
                     array_push($idDelete, $i);
                 }
+                continue;
             }
             array_push($idDelete, $string);
         }
@@ -82,6 +89,12 @@ class TableController implements IController {
         $tplData['impact'] = $this->db->getImpact();
         $incidents = $this->db->incidentsToTable();
         $tplData['table'] = $this->createTable($incidents);
+
+        if (isset($_POST['delete'])) {
+            $tplData['delete'] = $_POST['delete'];
+            $tplData['split'] = $this->splitDelete($_POST['delete']);
+            $this->deleteIncidents($this->splitDelete($_POST['delete']));
+        }
 
         //// vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony

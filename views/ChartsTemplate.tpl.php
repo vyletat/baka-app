@@ -30,21 +30,30 @@
     <h1>Incident charts</h1>
     <h2>Criteria</h2>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 justify-content-center">
             <canvas id="chart-1" width="auto" height="auto"></canvas>
             <canvas id="chart-2" width="auto" height="auto"></canvas>
-            <canvas id="chart-3" width="auto" height="auto"></canvas>
         </div>
         <div class="col-sm-6">
+            <canvas id="chart-3" width="auto" height="auto"></canvas>
             <canvas id="chart-4" width="auto" height="auto"></canvas>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-6 ">
             <canvas id="chart-5" width="auto" height="auto"></canvas>
-            <canvas id="chart-6" width="auto" height="auto"></canvas>
         </div>
     </div>
 
     <h2>Prioritization methods</h2>
+    <div class="row justify-content-center">
+        <div class="col-sm-6 ">
+            <canvas id="chart-6" width="auto" height="auto"></canvas>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-6">
+
             <canvas id="chart-7" width="auto" height="auto"></canvas>
             <canvas id="chart-8" width="auto" height="auto"></canvas>
             <canvas id="chart-9" width="auto" height="auto"></canvas>
@@ -55,15 +64,12 @@
             <canvas id="chart-12" width="auto" height="auto"></canvas>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 ">
             <canvas id="chart-13" width="auto" height="auto"></canvas>
-            <canvas id="chart-14" width="auto" height="auto"></canvas>
         </div>
     </div>
 </div>
-
-
 
 <script>
     //https://www.chartjs.org

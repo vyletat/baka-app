@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $tplData['title']; ?></title>
 
     <!-- Nacteni sablony s hlavickou a odkazy stranky -->
     <?php
-    include ("./views/elem/HeadTemplate.tpl.php");
+    include("./views/elem/HeadTemplate.tpl.php");
     ?>
 </head>
 <body>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">Incidents calculation</li>
     </ol>
 </nav>
@@ -22,12 +24,15 @@
     <h1>Calculation methods</h1>
     <div class="row">
         <div class="col-sm-1">
-            <button class="btn btn-success" style="height: 100%" onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn btn-success" style="height: 100%"
+                    onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i
+                        class="fas fa-arrow-left"></i></button>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-5">
             <form method="post" action="">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="all-radio" value="0" checked>
+                    <input class="form-check-input" type="radio" name="calculation-method" id="all-radio" value="0"
+                           checked>
                     <label class="form-check-label" for="all-radio">All methods</label>
                 </div>
                 <div class="form-check">
@@ -58,18 +63,33 @@
                     <input class="form-check-input" type="radio" name="calculation-method" id="seventh-radio" value="7">
                     <label class="form-check-label" for="seventh-radio">Method rank order centroid</label>
                 </div>
-                <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i> Choose</button>
+                <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i>
+                    Choose
+                </button>
             </form>
         </div>
-        <div class="col-sm-2 align-self-center">
-            <form action="" method="post">
-                <input type="hidden" name="page" value="methods" />
-                <input type="hidden" value="true" name="refresh">
-                <button type="submit" class="btn btn-warning"><i class="fas fa-redo-alt"></i>Recalculate incidents</button>
-            </form>
+        <div class="col-sm-5 align-self-center">
+            <div class="clo-sm-6">
+                <form action="" method="post">
+                    <input type="hidden" name="page" value="methods"/>
+                    <input type="hidden" value="true" name="refresh">
+                    <button type="submit" class="btn btn-warning"><i class="fas fa-redo-alt"></i> Recalculate incidents
+                    </button>
+                </form>
+            </div>
+            <div class="clo-sm-6">
+                <form action="" method="post">
+                    <input type="hidden" name="page" value="methods"/>
+                    <input type="hidden" value="xls" name="download">
+                    <button type="submit" class="btn btn-info"><i class="fas fa-file-excel"></i> Download excel sheet
+                    </button>
+                </form>
+            </div>
         </div>
         <div class="col-sm-1">
-            <button class="btn btn-danger" style="height: 100%" onclick="window.location.href = 'http://localhost/baka-app?page=charts'"><i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-danger" style="height: 100%"
+                    onclick="window.location.href = 'http://localhost/baka-app?page=charts'"><i
+                        class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 
@@ -77,24 +97,24 @@
     <h1 id="h1-result-table">Table with results</h1>
     <!-- Vypsani tabulky s daty -->
     <?php
-    if(array_key_exists('table', $tplData)) {
+    if (array_key_exists('table', $tplData)) {
         echo $tplData['table'];
     }
     ?>
 
     <!-- Script pro nacteni scrollX pro tabulku -->
     <script>
-        $(document).ready( function () {
+        $(document).ready(function () {
             $('#table-methods').DataTable({
                 "scrollX": true
             });
-        } );
+        });
     </script>
 </div>
 </body>
 
 <!-- Nacteni sablony se zápatím stránky. -->
 <?php
-include ("./views/elem/FooterTemplate.tml.php");
+include("./views/elem/FooterTemplate.tml.php");
 ?>
 </html>

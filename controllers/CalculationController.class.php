@@ -15,6 +15,9 @@ class CalculationController implements IController
     /** @var MyFileHandler $file Sprava souboru. */
     private $file;
 
+    /** @var MyFileHandler $file Sprava souboru. */
+    private $xml;
+
     /**
      * Inicializace pripojeni k databazi.
      */
@@ -27,6 +30,10 @@ class CalculationController implements IController
         // inicializace prace se souborem
         require_once(DIRECTORY_MODELS . "/MyFileHandler.class.php");
         $this->file = new MyFileHandler();
+
+        // inicializace prace se souborem
+        require_once(DIRECTORY_MODELS . "/ExportXLS.php");
+        $this->xml = new ExportXLS();
     }
 
     /**
@@ -212,7 +219,8 @@ class CalculationController implements IController
         return floatval($result);
     }
 
-    function calculateSlaTime($sla_time, $weight) {
+    function calculateSlaTime($sla_time, $weight)
+    {
         $max = 4230.0;
         $value = 0.0;
         if ($sla_time > $max) {
@@ -282,6 +290,20 @@ class CalculationController implements IController
 
     //---------------------------------------------- END OF CALCULATION ------------------------------------------------
 
+    function downloadXls($array)
+    {
+        // https://stackoverflow.com/questions/10424847/export-an-array-of-arrays-to-excel-in-php
+        header("Content-Disposition: attachment; filename=\"INCIDENTS.xls\"");
+        header("Content-Type: application/vnd.ms-excel;");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $out = fopen("php://output", 'w');
+        foreach ($array as $data) {
+            fputcsv($out, $data, "\t");
+        }
+        fclose($out);
+    }
+
     /**
      * Vratí obsah stránky s metadami.
      *
@@ -299,6 +321,23 @@ class CalculationController implements IController
         if (isset($_POST['refresh'])) {
             if ($_POST['refresh'] == true) {
                 $this->updateAllMethodsAndPriority();
+            }
+        }
+
+        if (isset($_POST['download'])) {
+            if ($_POST['download'] == "xls") {
+                $headerArray = array('id', 'name', 'sla_time', 'urgency', 'reproductive', 'project_phase', 'number_of_effective_machines', 'impact', 'expected_priority', 'priority_1', 'priority_2', 'priority_3', 'priority_4', 'priority_5', 'priority_6', 'priority_7', 'priority_1_rating', 'priority_2_rating', 'priority_3_rating', 'priority_4_rating', 'priority_5_rating', 'priority_6_rating', 'priority_7_rating');
+                $arrayIncidents = $this->db->getIncident();
+                $array = array();
+                array_push($array, $headerArray);
+                //$headerArray array(`id`, `name`, `sla_time`, `urgency`, `reproductive`, `project_phase`, `number_of_effective_machines`, `impact`, `expected_priority`, `priority_1`, `priority_2`, `priority_3`, `priority_4`, `priority_5`, `priority_6`, `priority_7`, `priority_1_rating`, `priority_2_rating`, `priority_3_rating`, `priority_4_rating`, `priority_5_rating`, `priority_6_rating`, `priority_7_rating`));
+                //array_push($array, ($this->db->getIncident()));
+                /*$this->xml->setParams("Incidents.xls", $headerArray, $this->db->getIncident());
+                $this->xml->sendFile();*/
+                foreach ($arrayIncidents as $row) {
+                    array_push($array, $row);
+                }
+                $this->downloadXls($array);
             }
         }
 
