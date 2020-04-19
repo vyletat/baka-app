@@ -61,8 +61,9 @@
                 <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i> Choose</button>
             </form>
         </div>
-        <div class="col-sm-2">
-            <form>
+        <div class="col-sm-2 align-self-center">
+            <form action="" method="post">
+                <input type="hidden" name="page" value="methods" />
                 <input type="hidden" value="true" name="refresh">
                 <button type="submit" class="btn btn-warning"><i class="fas fa-redo-alt"></i>Recalculate incidents</button>
             </form>

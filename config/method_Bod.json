@@ -1,65 +1,65 @@
 {
   "priority": {
-    "method": "min",
+    "order": "asc",
     "normalize": false,
-    "min": 0,
-    "max": 0,
+    "min": 101,
+    "max": 12,
     "scale": {
-      "very_high": 38,
-      "high": 47,
-      "medium": 58,
-      "low": 90
+      "very_high": 25,
+      "high": 55,
+      "medium": 65,
+      "low": 100
     }
   },
   "criteria": {
     "sla_time": {
-      "contains": true,
+      "contains": false,
       "weight": 0
     },
     "urgency": {
       "contains": true,
-      "weight": 7.8,
+      "weight": 1,
       "attributes": {
-        "highest": 1,
-        "high": 2,
-        "medium": 3,
-        "low": 4
+        "highest": 3,
+        "high": 5,
+        "medium": 10,
+        "low": 20
       }
     },
     "number_of_affective_machines": {
       "contains": true,
-      "weight": 6.7,
+      "weight": 1,
       "attributes": {
         "more_than_1000": 1,
-        "101-1000": 2,
-        "11-100": 3,
-        "2-10": 4,
-        "one": 5
+        "101-1000": 3,
+        "11-100": 5,
+        "2-10": 10,
+        "one": 15
       }
     },
     "impact": {
       "contains": true,
-      "weight": 8.3,
+      "weight": 1,
       "attributes": {
-        "critical": 1,
-        "non-critical": 2
+        "critical": 3,
+        "non-critical": 20
       }
     },
     "project_phase": {
       "contains": true,
-      "weight": 6.8,
+      "weight": 1,
       "attributes": {
         "production": 1,
-        "pilot": 2,
-        "uat": 3,
-        "certification": 4,
-        "sit": 5,
-        "internal_qa": 6
+        "pilot": 3,
+        "uat": 5,
+        "certification": 10,
+        "sit": 15,
+        "internal_qa": 20
       }
     },
     "reproducibility": {
       "contains": true,
-      "weight": 4.2,
+      "weight": 1,
       "attributes": {
         "yes": 1,
         "no": 2

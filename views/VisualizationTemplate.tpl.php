@@ -26,9 +26,12 @@
 </nav>
 
 <div class="container">
-    <iframe width="933" height="700"
-            src="https://app.powerbi.com/view?r=eyJrIjoiZmNmZTk0NDYtNDY0MC00NjQ2LWJjOWQtNzhiOTM0Zjk2Y2RlIiwidCI6IjliZDVjNzY4LTkwYjgtNGU0Zi04NDE2LTE0NzcyOWQ5MWM1MyIsImMiOjl9"
-            frameborder="0" allowFullScreen="true"></iframe>
+    <div class="row justify-content-center">
+        <iframe width="933" height="700"
+                src="https://app.powerbi.com/view?r=eyJrIjoiZmNmZTk0NDYtNDY0MC00NjQ2LWJjOWQtNzhiOTM0Zjk2Y2RlIiwidCI6IjliZDVjNzY4LTkwYjgtNGU0Zi04NDE2LTE0NzcyOWQ5MWM1MyIsImMiOjl9"
+                frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
 </div>
 
 <!-- Nacteni sablony se zápatím stránky. -->

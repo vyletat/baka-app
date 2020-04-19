@@ -267,7 +267,7 @@ class MyDatabase {
      * @param int $rating       Hodnocení
      * @param int $priority     Priorita
      */
-    function updateRatingAndPriority (int $id, int $number, int $rating, int $priority) {
+    function updateRatingAndPriority (int $id, int $number, $rating, int $priority) {
         $values = "`priority_"."$number"."`=$priority, `priority_"."$number"."_rating`=$rating";
         $where = "`id`=$id";
         $this->updateInTable(TABLE_INCIDENT, $values, $where);
@@ -409,14 +409,14 @@ class MyDatabase {
         incident.priority_2 AS 'priority_2',
         incident.priority_3_rating AS 'rating_3',
         incident.priority_3 AS 'priority_3',
-        incident.priority_3_rating AS 'rating_4',
-        incident.priority_3 AS 'priority_4',
-        incident.priority_3_rating AS 'rating_5',
-        incident.priority_3 AS 'priority_5',
-        incident.priority_3_rating AS 'rating_6',
-        incident.priority_3 AS 'priority_6',
-        incident.priority_3_rating AS 'rating_7',
-        incident.priority_3 AS 'priority_7'
+        incident.priority_4_rating AS 'rating_4',
+        incident.priority_4 AS 'priority_4',
+        incident.priority_5_rating AS 'rating_5',
+        incident.priority_5 AS 'priority_5',
+        incident.priority_6_rating AS 'rating_6',
+        incident.priority_6 AS 'priority_6',
+        incident.priority_7_rating AS 'rating_7',
+        incident.priority_7 AS 'priority_7'
         FROM
         incident
         INNER JOIN impact ON incident.impact = impact.id_IMPACT

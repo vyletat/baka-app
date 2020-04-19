@@ -28,6 +28,8 @@ class AddController implements IController
         $this->file = new MyFileHandler();
     }
 
+    //-------------------------------------------- START OF CALCULATION ------------------------------------------------
+
     /**
      *
      *
@@ -40,7 +42,7 @@ class AddController implements IController
      * @param int $impact
      * @return int|mixed
      */
-    function calculateIncident(int $method, int $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
+    function calculateIncident(int $method, $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
     {
         $options = $this->file->getMethodParams($method);
         //return $options;
@@ -49,7 +51,7 @@ class AddController implements IController
             if ($criterion['contains'] == true) {
                 switch ($criterion_name) {
                     case "sla_time":
-                        $val_sla_time = $criterion['weight'] * $sla_time;
+                        $val_sla_time = $this->calculateSlaTime($sla_time, $criterion['weight']);
                         array_push($values, $val_sla_time);
                         break;
 
@@ -109,7 +111,7 @@ class AddController implements IController
             }
         }
         //metoda
-        $result = 0;
+        $result = 0.0;
         switch ($options['other']['method']) {
             case "multiply":
                 foreach ($values as $value) {
@@ -125,11 +127,22 @@ class AddController implements IController
         }
 
         //normalize
-        if ($options['priority']['normalize']) {
+        if ($options['priority']['normalize'] == true) {
             $normalizeResult = ($result - $options['priority']['min']) / ($options['priority']['max'] - $options['priority']['min']);
-            $result = $normalizeResult;
+            $result = floatval($normalizeResult);
         }
-        return $result;
+        return floatval($result);
+    }
+
+    function calculateSlaTime($sla_time, $weight) {
+        $max = 4230.0;
+        $value = 0.0;
+        if ($sla_time > $max) {
+            $value = 0.0;
+        } else {
+            $value = ($max - $sla_time) / $max;
+        }
+        return ($value * $weight);
     }
 
     /**
@@ -142,8 +155,8 @@ class AddController implements IController
     function calculatePriority(int $method, $rating)
     {
         $options = $this->file->getMethodParams($method);
-        switch ($options['priority']['method']) {
-            case "min":
+        switch ($options['priority']['order']) {
+            case "asc":
                 if ($rating < $options['priority']['scale']['very_high']) {
                     return 1;
                 } else {
@@ -189,6 +202,8 @@ class AddController implements IController
         }
     }
 
+    //---------------------------------------------- END OF CALCULATION ------------------------------------------------
+
     /**
      * Funkce sloužící pro náhodné generování stringu.
      *
@@ -229,7 +244,7 @@ class AddController implements IController
     {
         $incidents = array();
         for ($i = 0; $i < $number; $i++) {
-            $incident = array("name" => $this->generateDateAndNumber($i + 1), "sla-time" => rand(1, 250), "urgency" => rand(1, 4), "reproductive" => rand(1, 2), "project-phase" => rand(1, 6), "number-of-affective-machines" => rand(1, 5), "impact" => rand(1, 2));
+            $incident = array("name" => $this->generateDateAndNumber($i + 1), "sla-time" => rand(1, 7200), "urgency" => rand(1, 4), "reproductive" => rand(1, 2), "project-phase" => rand(1, 6), "number-of-affective-machines" => rand(1, 5), "impact" => rand(1, 2));
             array_push($incidents, $incident);
         }
         return $incidents;
@@ -327,10 +342,14 @@ class AddController implements IController
         // nazev
         $tplData['title'] = $pageTitle;
 
-        // $tplData['values'] = $this->calculateIncident(1, 2, 1, 1, 1, 1, 1);
-        // $rating = $this->calculateIncident(1, 2, 2, 1, 1, 3, 2);
-        //$tplData['priority'] = $this->calculatePriority(1, $rating);
-        // $tplData['dataAll'] = $this->updateAllMethodsAndPriority();
+        /*$tplData['values1'] = $this->calculateIncident(4, 1000, 1, 1, 1, 1, 1);
+        $rating = $this->calculateIncident(4, 1000, 1, 1, 1, 1, 1);
+        $tplData['priority1'] = $this->calculatePriority(4, $rating);
+        $this->updateAllMethodsAndPriority();
+        $tplData['values2'] = $this->calculateIncident(4, 4000, 4, 2, 6, 5, 2);
+        $rating = $this->calculateIncident(4, 4000, 4, 2, 6, 5, 2);
+        $tplData['priority2'] = $this->calculatePriority(4, $rating);
+        $tplData['time'] = $this->calculateSlaTime(4000,0.21);*/
 
         //pro add s konkretnimy hodnotami
         if (isset($_GET['reproductive'])) {

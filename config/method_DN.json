@@ -1,6 +1,6 @@
 {
   "priority": {
-    "method": "min",
+    "order": "asc",
     "normalize": false,
     "min": 21,
     "max": 71,

@@ -1,14 +1,14 @@
 {
   "priority": {
-    "method": "min",
+    "order": "desc",
     "normalize": true,
-    "min": 0,
-    "max": 0,
+    "min": 0.10700813,
+    "max": 0.72018573,
     "scale": {
-      "very_high": 38,
-      "high": 47,
-      "medium": 58,
-      "low": 90
+      "very_high": 1,
+      "high": 0.71,
+      "medium": 0.32,
+      "low": 0.05
     }
   },
   "criteria": {

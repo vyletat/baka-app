@@ -24,9 +24,16 @@
 <div class="container">
 
     <?php
-        echo($tplData['values']);
-    echo($tplData['priority']);
-    print_r($tplData['dataAll'])
+    echo "rating1:";
+        var_dump($tplData['values1']);
+    echo "<br> prio1:";
+    var_dump($tplData['priority1']);
+    echo "<br> rating2:";
+    var_dump($tplData['values2']);
+    echo "<br> prio2:";
+    var_dump($tplData['priority2']);
+    echo "<br> time:";
+    var_dump($tplData['time']);
     ?>
 
     <div class="row">
