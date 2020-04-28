@@ -6,8 +6,8 @@
     "max":0.608458849,
     "scale": {
       "very_high": 1.0,
-      "high": 0.55,
-      "medium": 0.2,
+      "high": 0.6,
+      "medium": 0.25,
       "low": 0.1
     }
   },

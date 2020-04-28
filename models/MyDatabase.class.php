@@ -617,10 +617,26 @@ FROM incident";
         return $res;
     }
 
+    /**
+     *
+     *
+     * @param $id
+     */
     function deleteIncident($id)
     {
         $where = "`id`=$id";
         $this->deleteFromTable(TABLE_INCIDENT, $where);
+    }
+
+    /**
+     *
+     */
+    function getCountIncident() {
+        $query = "SELECT COUNT(`id`)
+        FROM incident";
+        $obj = $this->executeQuery($query);
+        $res = $this->resultObjectToArray($obj);
+        return $res;
     }
 
     ///////////////////  KONEC: Konkretni funkce  ////////////////////////////////////////////

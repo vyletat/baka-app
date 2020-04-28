@@ -60,6 +60,11 @@ class ChartsController implements IController {
         return (array($values, $keys, $elements));
     }
 
+    function getCountOfIncedents() {
+        $count = $this->db->getCountIncident();
+        return $count[0]['COUNT(`id`)'];
+    }
+
     /**
      * Vratí obsah stránky s grafy.
      *
@@ -72,6 +77,7 @@ class ChartsController implements IController {
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
+        $tplData['count'] = $this->getCountOfIncedents();
         $tplData['data'] = $this->getData();
 
         /*$pole = array();

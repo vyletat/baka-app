@@ -73,7 +73,7 @@
                 <form action="" method="post">
                     <input type="hidden" name="page" value="methods"/>
                     <input type="hidden" value="true" name="refresh">
-                    <button type="submit" class="btn btn-warning"><i class="fas fa-redo-alt"></i> Recalculate incidents
+                    <button type="submit" class="btn btn-warning button-calculation"><i class="fas fa-redo-alt"></i> Recalculate incidents
                     </button>
                 </form>
             </div>
@@ -81,7 +81,7 @@
                 <form action="" method="post">
                     <input type="hidden" name="page" value="methods"/>
                     <input type="hidden" value="xls" name="download">
-                    <button type="submit" class="btn btn-info"><i class="fas fa-file-excel"></i> Download excel sheet
+                    <button type="submit" class="btn btn-info button-calculation"><i class="fas fa-file-excel"></i> Download excel sheet
                     </button>
                 </form>
             </div>
@@ -99,6 +99,10 @@
     <?php
     if (array_key_exists('table', $tplData)) {
         echo $tplData['table'];
+    } else {
+    ?>
+        <p>Choose one option bellow for the table of results.</p>
+    <?php
     }
     ?>
 

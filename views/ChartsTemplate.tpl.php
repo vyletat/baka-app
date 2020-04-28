@@ -24,10 +24,22 @@
 <?php
 /*if (isset($tplData['data'])) {
     print("<pre>".print_r($tplData['data'])."</pre>");
-}
-*/ ?>
+}*/
+?>
 <div class="container">
     <h1>Incident charts</h1>
+    <div class="row">
+        <p><i class="fas fa-angle-double-right"></i> Total count of incidents: </p>
+        <strong>
+        <?php
+            if (isset($tplData['count'])) {
+                echo $tplData['count'];
+            }
+        ?>
+        </strong>
+    </div>
+
+
     <h2>Criteria</h2>
     <div class="row">
         <div class="col-sm-6 justify-content-center">

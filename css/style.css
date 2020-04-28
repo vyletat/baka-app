@@ -1,7 +1,41 @@
+/*
+Main file for CSS
+ */
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<< element CSS >>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* .......................... class CSS ............................. */
+
+.button-home {
+    height: 200px !important;
+    width: 200px !important;
+    margin: 20px;
+}
+
+.button-calculation {
+    height: 50px !important;
+    width: 80% !important;
+    margin: 20px;
+}
+
+/* ############################## id CSS ############################## */
+
 #h1-generate {
     margin-top: 40px;
 }
 
 #h1-result-table {
+    margin-top: 40px;
+}
+
+#h2-calculation {
+    margin-top: 40px;
+}
+
+#fieldset-generate {
+    margin-top: 40px;
+}
+
+#fieldset-delete {
     margin-top: 40px;
 }

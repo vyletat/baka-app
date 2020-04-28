@@ -312,17 +312,6 @@ class CalculationController implements IController
      */
     public function show(string $pageTitle): string
     {
-        //// vsechna data sablony budou globalni
-        global $tplData;
-        $tplData = [];
-        // nazev
-        $tplData['title'] = $pageTitle;
-
-        if (isset($_POST['refresh'])) {
-            if ($_POST['refresh'] == true) {
-                $this->updateAllMethodsAndPriority();
-            }
-        }
 
         if (isset($_POST['download'])) {
             if ($_POST['download'] == "xls") {
@@ -340,6 +329,20 @@ class CalculationController implements IController
                 $this->downloadXls($array);
             }
         }
+
+        //// vsechna data sablony budou globalni
+        global $tplData;
+        $tplData = [];
+        // nazev
+        $tplData['title'] = $pageTitle;
+
+        if (isset($_POST['refresh'])) {
+            if ($_POST['refresh'] == true) {
+                $this->updateAllMethodsAndPriority();
+            }
+        }
+
+
 
         if (isset($_POST['calculation-method'])) {
             $tplData['table'] = $this->option($_POST['calculation-method']);

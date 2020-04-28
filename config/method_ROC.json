@@ -5,10 +5,10 @@
     "min": 0.067440586,
     "max": 0.745673611,
     "scale": {
-      "very_high": 1,
-      "high": 0.78,
-      "medium": 0.33,
-      "low": 0.06
+      "very_high": 1.0,
+      "high": 0.55,
+      "medium": 0.2,
+      "low": 0.1
     }
   },
   "criteria": {

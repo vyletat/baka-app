@@ -59,7 +59,7 @@
     </script>
 
     <!--TODO-->
-    <fieldset>
+    <fieldset id="fieldset-delete">
         <legend>Delete incident</legend>
         <form action="" method="post">
             <input type="hidden" name="page" value="table"/>

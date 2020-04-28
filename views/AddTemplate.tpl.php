@@ -24,7 +24,7 @@
 <div class="container">
 
     <?php
-    echo "rating1:";
+    /*echo "rating1:";
         var_dump($tplData['values1']);
     echo "<br> prio1:";
     var_dump($tplData['priority1']);
@@ -33,7 +33,7 @@
     echo "<br> prio2:";
     var_dump($tplData['priority2']);
     echo "<br> time:";
-    var_dump($tplData['time']);
+    var_dump($tplData['time']);*/
     ?>
 
     <div class="row">
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label for="sla-time">SLA time</label>
                                 <input type="number" class="form-control" id="sla-time" name="sla-time" min="1" max="525600" required>
-                                <small class="form-text text-muted">Max 525 600</small>
+                                <small class="form-text text-muted">Max value 525 600</small>
                             </div>
 
                             <div class="form-group">
@@ -148,7 +148,7 @@
             ?>
 
             <!-- Form for generating many random incidents data -->
-            <fieldset>
+            <fieldset id="fieldset-generate">
                 <legend>Generate random incidents</legend>
                 <form action="" method="get">
                     <!-- Hidden input for MVC page add -->
@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label for="generator-number">Number of incidents you can generate</label>
                             <input type="number" min="1" max="100" class="form-control" id="generator-number" value="1" name="generate-number">
-                            <small class="form-text text-muted">Max 100</small>
+                            <small class="form-text text-muted">Max value 100 in one process</small>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success col-sm-3" id="generate-incident-button"><i class="fas fa-database"></i> Generate</button>
