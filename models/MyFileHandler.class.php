@@ -23,6 +23,12 @@ class MyFileHandler
     {
     }
 
+    /**
+     *
+     *
+     * @param string $filePath
+     * @return false|string
+     */
     function loadFile(string $filePath)
     {
         if (file_exists($filePath) && is_file($filePath)) {
@@ -31,6 +37,12 @@ class MyFileHandler
         }
     }
 
+    /**
+     *
+     *
+     * @param $data
+     * @return mixed
+     */
     function decodeJSONFile($data)
     {
         // Get the contents of the JSON file
@@ -40,7 +52,12 @@ class MyFileHandler
         //return $options = json_decode($data);
     }
 
-    //na zaklade vstupniho cisla bude vracet soubor s config
+    /**
+     * Metoda na zaklade vstupniho cisla bude vracet soubor s config.
+     *
+     * @param int $number
+     * @return mixed
+     */
     function getMethodParams(int $number)
     {
         switch ($number) {

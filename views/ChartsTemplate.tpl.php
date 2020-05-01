@@ -15,7 +15,7 @@
 <body>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Incidents Charts</li>
     </ol>
@@ -29,7 +29,7 @@
 <div class="container">
     <h1>Incident charts</h1>
     <div class="row">
-        <p><i class="fas fa-angle-double-right"></i> Total count of incidents: </p>
+        <p><i class="fas fa-angle-double-right"></i> Total count of incidents:&nbsp</p>
         <strong>
         <?php
             if (isset($tplData['count'])) {

@@ -60,6 +60,11 @@ class ChartsController implements IController {
         return (array($values, $keys, $elements));
     }
 
+    /**
+     * Vrátí počet incidentů v databázi.
+     *
+     * @return mixed    Počet incidentů.
+     */
     function getCountOfIncedents() {
         $count = $this->db->getCountIncident();
         return $count[0]['COUNT(`id`)'];
@@ -80,13 +85,6 @@ class ChartsController implements IController {
         $tplData['count'] = $this->getCountOfIncedents();
         $tplData['data'] = $this->getData();
 
-        /*$pole = array();
-        $impacts = $this->db->numberOfImpact();
-        foreach ($impacts[0] as $impact) {
-            array_push($pole, $impact);
-        }
-        $tplData['impact_data'] = json_encode($pole);
-        $tplData['impact_labels'] = json_encode(array("Critical", "Non-critical"));*/
 
         //// vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony

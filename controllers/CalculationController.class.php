@@ -219,6 +219,13 @@ class CalculationController implements IController
         return floatval($result);
     }
 
+    /**
+     *
+     *
+     * @param $sla_time
+     * @param $weight
+     * @return float|int
+     */
     function calculateSlaTime($sla_time, $weight)
     {
         $max = 4230.0;
@@ -275,7 +282,9 @@ class CalculationController implements IController
         }
     }
 
-    //Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority
+    /**
+     * Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority.
+     */
     function updateAllMethodsAndPriority()
     {
         $allIncidents = $this->db->getIncident();
@@ -290,6 +299,11 @@ class CalculationController implements IController
 
     //---------------------------------------------- END OF CALCULATION ------------------------------------------------
 
+    /**
+     * Metoda pro vygenerování a stažení XLS souboru.
+     *
+     * @param $array    Pole s parametry.
+     */
     function downloadXls($array)
     {
         // https://stackoverflow.com/questions/10424847/export-an-array-of-arrays-to-excel-in-php
@@ -307,7 +321,7 @@ class CalculationController implements IController
     /**
      * Vratí obsah stránky s metadami.
      *
-     * @param string $pageTitle Název stránky.
+     * @param string $pageTitle     Název stránky.
      * @return string               Výpis v šabloně.
      */
     public function show(string $pageTitle): string
@@ -341,8 +355,6 @@ class CalculationController implements IController
                 $this->updateAllMethodsAndPriority();
             }
         }
-
-
 
         if (isset($_POST['calculation-method'])) {
             $tplData['table'] = $this->option($_POST['calculation-method']);

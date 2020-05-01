@@ -110,6 +110,7 @@ class AddController implements IController
                 }
             }
         }
+
         //metoda
         $result = 0.0;
         switch ($options['other']['method']) {
@@ -134,6 +135,13 @@ class AddController implements IController
         return floatval($result);
     }
 
+    /**
+     * Metoda pro výpočet SLA času.
+     *
+     * @param $sla_time     Hodnota v intervalu <0; 1>.
+     * @param $weight       Váha SLA krotéria šas.
+     * @return float|int    Vážená hodnota kritéria SLA času.
+     */
     function calculateSlaTime($sla_time, $weight) {
         $max = 4230.0;
         $value = 0.0;
@@ -146,11 +154,11 @@ class AddController implements IController
     }
 
     /**
+     * Metoda vrací podle nastavení metody a ohodnocení prioritu incidentu.
      *
-     *
-     * @param int $method
-     * @param $rating
-     * @return int
+     * @param int $method   Metoda, podle které chcete určit prioritu.
+     * @param $rating       Ohodnocení incidentu.
+     * @return int          Číslo priority incedentu.
      */
     function calculatePriority(int $method, $rating)
     {
@@ -189,7 +197,9 @@ class AddController implements IController
         }
     }
 
-    //Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority
+    /**
+     * Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority.
+     */
     function updateAllMethodsAndPriority()
     {
         $allIncidents = $this->db->getIncident();
@@ -297,7 +307,6 @@ class AddController implements IController
         $alert = "<i class=\"far fa-frown\"></i> Incident was NOT successfully added.";
         //error
         return array('add_status' => $status, 'add_alert' => $alert);
-
     }
 
     /**
@@ -342,14 +351,6 @@ class AddController implements IController
         // nazev
         $tplData['title'] = $pageTitle;
 
-        /*$tplData['values1'] = $this->calculateIncident(4, 1000, 1, 1, 1, 1, 1);
-        $rating = $this->calculateIncident(4, 1000, 1, 1, 1, 1, 1);
-        $tplData['priority1'] = $this->calculatePriority(4, $rating);
-        $this->updateAllMethodsAndPriority();
-        $tplData['values2'] = $this->calculateIncident(4, 4000, 4, 2, 6, 5, 2);
-        $rating = $this->calculateIncident(4, 4000, 4, 2, 6, 5, 2);
-        $tplData['priority2'] = $this->calculatePriority(4, $rating);
-        $tplData['time'] = $this->calculateSlaTime(4000,0.21);*/
 
         //pro add s konkretnimy hodnotami
         if (isset($_GET['reproductive'])) {
@@ -366,10 +367,6 @@ class AddController implements IController
                 $tplData['add_alert'] = "<i class=\"far fa-frown\"></i> Incident was NOT successfully added.";
             }
         }
-
-        /*$add = $this->paramsValidation();
-        $tplData['add_status'] = $add['add_status'];
-        $tplData['add_alert'] = $add['add_alert'];*/
 
         //pro add s generovanim
         if (isset($_GET['generate-number'])) {

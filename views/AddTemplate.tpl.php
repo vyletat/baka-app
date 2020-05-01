@@ -16,7 +16,7 @@
 <!-- Navbar for orirentation in the app -->
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a></li>
         <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-plus"></i> Add Incidents</li>
     </ol>
 </nav>
@@ -187,7 +187,7 @@
             ?>
         </div>
         <div class="col-sm-1">
-            <button class="btn btn-primary" style="height: 100%" onclick="window.location.href = 'http://localhost/baka-app?page=table'"><i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-primary" style="height: 100%" onclick="window.location.href = '?page=table'"><i class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 </div>

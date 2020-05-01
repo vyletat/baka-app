@@ -19,8 +19,6 @@ class HelpController implements IController {
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
-        // data pohadek
-        //$tplData['stories'] = $this->db->getAllIntroductions();
 
         //// vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony

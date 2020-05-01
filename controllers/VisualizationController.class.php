@@ -7,19 +7,6 @@ require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
  */
 class VisualizationController implements IController {
 
-    /** @var DatabaseModel $db  Sprava databaze. */
-    private $db;
-
-    /**
-     * Inicializace pripojeni k databazi.
-     */
-    /*public function __construct() {
-        // inicializace prace s DB
-        require_once (DIRECTORY_MODELS ."/MyDatabase.class.php");
-        $this->db = new DatabaseModel();
-    }*/
-
-
     /**
      * Vrati obsah uvodni stranky.
      * @param string $pageTitle     Nazev stranky.

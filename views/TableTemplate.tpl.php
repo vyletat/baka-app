@@ -16,7 +16,7 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-table"></i> Incidents Table</li>
     </ol>
@@ -24,16 +24,11 @@
 
 <div class="container">
 
-    <?php
-    echo $tplData['delete'];
-    print_r($tplData['split']);
-    ?>
-
     <h1>Incidents table</h1>
     <div class="row">
         <div class="col-sm-1">
             <button class="btn btn-success" style="height: 50%"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i
+                    onclick="window.location.href = '?page=add'"><i
                         class="fas fa-arrow-left"></i></button>
         </div>
         <div class="col-sm-10">
@@ -46,7 +41,7 @@
         </div>
         <div class="col-sm-1">
             <button class="btn btn-warning" style="height: 50%"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=methods'"><i
+                    onclick="window.location.href = '?page=methods'"><i
                         class="fas fa-arrow-right"></i></button>
         </div>
     </div>
@@ -71,8 +66,29 @@
             </div>
         </form>
     </fieldset>
-</div>
 
+    <!-- Zobrazeni alertu o stavu formulare -->
+    <?php
+    if (isset($tplData['delete_status'])) {
+        if ($tplData['delete_status'] == true) {
+            echo "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                $tplData[delete_alert]
+                 <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+                 </button>
+                </div>";
+        }
+        if ($tplData['delete_status'] == false) {
+            echo "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+                $tplData[delete_alert]
+                 <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+                 </button>
+                </div>";
+        }
+    }
+    ?>
+</div>
 </body>
 
 <!-- Nacteni sablony se zápatím stránky. -->

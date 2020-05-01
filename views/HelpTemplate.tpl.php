@@ -15,7 +15,7 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a></li>
         <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-question"></i> Help</li>
     </ol>
 </nav>
@@ -32,9 +32,9 @@
         <p></p>
     </div>
 
-    <div class="accordion" id="accordionElements">
+    <div class="accordion" id="accordionElements"  data-aos="zoom-in-up">
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingImpact">
                 <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseImpact" aria-expanded="true" aria-controls="collapseImpact">
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingUrgency">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseUrgency" aria-expanded="false" aria-controls="collapseUrgency">
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingProjectPhase">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseProjectPhase" aria-expanded="false" aria-controls="collapseProjectPhase">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingAffectedNumberOfMachines">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseAffectedNumberOfMachines" aria-expanded="false" aria-controls="collapseAffectedNumberOfMachines">
@@ -119,7 +119,7 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingReproducibility">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseReproducibility" aria-expanded="false" aria-controls="collapseReproducibility">
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
+        <div class="card">
             <div class="card-header" id="headingSlaTime">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSlaTime" aria-expanded="false" aria-controls="collapseSlaTime">
@@ -156,39 +156,62 @@
     </div>
 
     <h2 id="h2-calculation">Calculation Methods</h2>
-    <div class="accordion" id="accordionMethods">
+    <div class="accordion" id="accordionMethods"  data-aos="zoom-in-up">
 
-        <div class="card" data-aos="zoom-in-up">
-            <div class="card-header" id="headingOne">
+        <div class="card">
+            <div class="card-header" id="headingMethodOne">
                 <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseMethodOne" aria-expanded="true" aria-controls="collapseMethodOne">
                         Method Diebold Nixdorf default
                     </button>
                 </h2>
             </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionMethods">
+            <div id="collapseMethodOne" class="collapse show" aria-labelledby="headingMethodOne" data-parent="#accordionMethods">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
 
                         </div>
                         <div class="col-sm-6">
-
+                            <table class="table table-striped">
+                                <thead class="thead-dark"><tr class="tableizer-firstrow"><th>Pořadí</th><th>Atribut</th><th>Pořadí</th><th>Hodnoty</th><th>Váha</th></tr></thead><tbody>
+                                <tr><td>2.</td><td>Urgency</td><td>&nbsp;</td><td>&nbsp;</td><td>8</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>1.</td><td>Highest</td><td>1</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>2.</td><td>High</td><td>2</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>3.</td><td>Medium</td><td>3</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>4.</td><td>Low</td><td>4</td></tr>
+                                <tr><td>3.</td><td>NoAM</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>1.</td><td>> 1000</td><td>1</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>2.</td><td>101 - 1000</td><td>2</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>3.</td><td>11 - 100</td><td>3</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>4.</td><td>2 - 10</td><td>4</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>5.</td><td>1</td><td>5</td></tr>
+                                <tr><td>1.</td><td>Impact</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>1.</td><td>Critical</td><td>1</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>2.</td><td>Non-critical</td><td>2</td></tr>
+                                <tr><td>4.</td><td>Project Phase</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>1.</td><td>Production</td><td>1</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>2.</td><td>Pilot</td><td>2</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>3.</td><td>UAT</td><td>3</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>4.</td><td>Certification</td><td>4</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>4.</td><td>SIT</td><td>5</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td><td>5.</td><td>internal QA</td><td>6</td></tr>
+                                </tbody></table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
-            <div class="card-header" id="headingFour">
+        <div class="card">
+            <div class="card-header" id="headingMethodTwo">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMethodTwo" aria-expanded="false" aria-controls="collapseMethodTwo">
                         Method RS
                     </button>
                 </h2>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionMethods">
+            <div id="collapseMethodTwo" class="collapse" aria-labelledby="headingMethodTwo" data-parent="#accordionMethods">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -230,15 +253,15 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
-            <div class="card-header" id="headingFour">
+        <div class="card">
+            <div class="card-header" id="headingMethodThree">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMethodThree" aria-expanded="false" aria-controls="collapseMethodThree">
                         Method RR
                     </button>
                 </h2>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionMethods">
+            <div id="collapseMethodThree" class="collapse" aria-labelledby="headingMethodThree" data-parent="#accordionMethods">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -279,15 +302,15 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
-            <div class="card-header" id="headingFour">
+        <div class="card">
+            <div class="card-header" id="headingMethodFour">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMethodFour" aria-expanded="false" aria-controls="collapseMethodFour">
                         Method RE
                     </button>
                 </h2>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionMethods">
+            <div id="collapseMethodFour" class="collapse" aria-labelledby="headingMethodFour" data-parent="#accordionMethods">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -328,15 +351,15 @@
             </div>
         </div>
 
-        <div class="card" data-aos="zoom-in-up">
-            <div class="card-header" id="headingFour">
+        <div class="card">
+            <div class="card-header" id="headingMethodFive">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMethodFive" aria-expanded="false" aria-controls="collapseMethodFive">
                         Method ROC
                     </button>
                 </h2>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionMethods">
+            <div id="collapseMethodFive" class="collapse" aria-labelledby="headingMethodFive" data-parent="#accordionMethods">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">

@@ -20,7 +20,7 @@
 <!-- Navbar for orirentation in the app -->
 <nav aria-label="breadcrumb fixed-top">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a></li>
         <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-book-open"></i> Visualization</li>
     </ol>
 </nav>

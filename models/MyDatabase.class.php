@@ -621,11 +621,12 @@ FROM incident";
      *
      *
      * @param $id
+     * @return bool
      */
     function deleteIncident($id)
     {
         $where = "`id`=$id";
-        $this->deleteFromTable(TABLE_INCIDENT, $where);
+        return $this->deleteFromTable(TABLE_INCIDENT, $where);
     }
 
     /**

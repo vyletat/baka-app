@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class MyCalculation
+ */
 class MyCalculation {
 
 //-------------------------------------------- START OF CALCULATION ------------------------------------------------
@@ -108,6 +111,13 @@ class MyCalculation {
         return floatval($result);
     }
 
+    /**
+     *
+     *
+     * @param $sla_time
+     * @param $weight
+     * @return float|int
+     */
     function calculateSlaTime($sla_time, $weight) {
         $max = 4230.0;
         $value = 0.0;
@@ -163,7 +173,9 @@ class MyCalculation {
         }
     }
 
-    //Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority
+    /**
+     * Funkce aktulizuje u všech incidentů v databázi vypočítaný rating a priority.
+     */
     function updateAllMethodsAndPriority()
     {
         $allIncidents = $this->db->getIncident();

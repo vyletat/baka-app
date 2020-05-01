@@ -7,20 +7,6 @@ require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
  */
 class HomeController implements IController {
 
-    /** @var DatabaseModel $db  Sprava databaze. */
-    private $db;
-
-    /**
-     * Inicializace pripojeni k databazi.
-     */
-
-    /*public function __construct() {
-        // inicializace prace s DB
-        require_once (DIRECTORY_MODELS ."/MyDatabase.class.php");
-        $this->db = new DatabaseModel();
-    }*/
-
-
     /**
      * Vratí obsah úvodní stránky.
      *
@@ -33,8 +19,6 @@ class HomeController implements IController {
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
-        // data pohadek
-        //$tplData['stories'] = $this->db->getAllIntroductions();
 
         //// vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony

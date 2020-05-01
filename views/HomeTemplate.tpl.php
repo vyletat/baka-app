@@ -52,29 +52,29 @@
     <div>
         <div class="row justify-content-sm-center">
             <button data-aos="zoom-in" class="btn btn-success button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i class="fas fa-plus"></i>
+                    onclick="window.location.href = '?page=add'"><i class="fas fa-plus"></i>
                 Add incident
             </button>
             <button data-aos="zoom-in" class="btn btn-primary button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=table'"><i class="fas fa-table"></i>
+                    onclick="window.location.href = '?page=table'"><i class="fas fa-table"></i>
                 Incident table
             </button>
             <button data-aos="zoom-in" class="btn btn-warning button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=methods'"><i
+                    onclick="window.location.href = '?page=methods'"><i
                         class="fas fa-calculator"></i> Calculation methods
             </button>
         </div>
         <div class="row justify-content-sm-center">
             <button data-aos="zoom-in" class="btn btn-danger button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=charts'"><i
+                    onclick="window.location.href = '?page=charts'"><i
                         class="fas fa-chart-pie"></i> Charts
             </button>
             <button data-aos="zoom-in" class="btn btn-info button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=help'"><i
+                    onclick="window.location.href = '?page=help'"><i
                         class="fas fa-question"></i> Help
             </button>
             <button data-aos="zoom-in" class="btn btn-dark button-home"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=visualization'"><i
+                    onclick="window.location.href = '?page=visualization'"><i
                         class="fas fa-book-open"></i> Visualization
             </button>
         </div>

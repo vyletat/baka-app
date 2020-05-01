@@ -43,17 +43,27 @@ class TableController implements IController {
         return $table;
     }
 
+    /**
+     * Funkce pro odstraneni vsech zvolených incidentů.
+     *
+     * @param $arrayId  Pole s ID incidentu ke smazani.
+     * @return bool     True, pokud je delete v databázi ok, jinak false.
+     */
     function deleteIncidents($arrayId) {
         foreach ($arrayId as $id) {
-            $this->db->deleteIncident($id);
+            $ok = $this->db->deleteIncident($id);
+            if ($ok == false) {
+                return false;
+            }
         }
+        return true;
     }
 
     /**
+     * Funkce pro rozdělení a získání všech ID ze zadaného řetězce pro smazání incidentů z databáze.
      *
-     *
-     * @param string $deteleString
-     * @return array
+     * @param string $deteleString      Řetězec s příkazy.
+     * @return array                    Pole s ID pro smazání.
      */
     function splitDelete(string $deteleString):array {
         $idDelete = array();
@@ -71,6 +81,7 @@ class TableController implements IController {
         return $idDelete;
     }
 
+
     /**
      * Vratí obsah stránky s tabulkou.
      *
@@ -84,17 +95,26 @@ class TableController implements IController {
         // nazev
         $tplData['title'] = $pageTitle;
 
+        //Odstraneni incidentu s alertem
+        if (isset($_POST['delete'])) {
+            $tplData['delete'] = $_POST['delete'];
+            $tplData['split'] = $this->splitDelete($_POST['delete']);
+            $ok = $this->deleteIncidents($this->splitDelete($_POST['delete']));
+            $tplData['split2'] = $ok;
+            if ($ok) {
+                $tplData['delete_status'] = true;
+                $tplData['delete_alert'] = "<i class=\"far fa-laugh\"></i> Incident(s) was successfully DELETE.";
+            } else {
+                $tplData['delete_status'] = false;
+                $tplData['delete_alert'] = "<i class=\"far fa-frown\"></i> Incident(s) was NOT successfully DELETE.";
+            }
+        }
+
         // data pohadek
         $tplData['urgency'] = $this->db->getUrgency();
         $tplData['impact'] = $this->db->getImpact();
         $incidents = $this->db->incidentsToTable();
         $tplData['table'] = $this->createTable($incidents);
-
-        if (isset($_POST['delete'])) {
-            $tplData['delete'] = $_POST['delete'];
-            $tplData['split'] = $this->splitDelete($_POST['delete']);
-            $this->deleteIncidents($this->splitDelete($_POST['delete']));
-        }
 
         //// vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony

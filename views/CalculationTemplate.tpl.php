@@ -15,7 +15,7 @@
 <body>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="http://localhost/baka-app?page=home"><i class="fas fa-home"></i> Home</a>
+        <li class="breadcrumb-item"><a href="?page=home"><i class="fas fa-home"></i> Home</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Incidents calculation</li>
     </ol>
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-sm-1">
             <button class="btn btn-success" style="height: 100%"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=add'"><i
+                    onclick="window.location.href = '?page=add'"><i
                         class="fas fa-arrow-left"></i></button>
         </div>
         <div class="col-sm-5">
@@ -88,7 +88,7 @@
         </div>
         <div class="col-sm-1">
             <button class="btn btn-danger" style="height: 100%"
-                    onclick="window.location.href = 'http://localhost/baka-app?page=charts'"><i
+                    onclick="window.location.href = '?page=charts'"><i
                         class="fas fa-arrow-right"></i></button>
         </div>
     </div>
