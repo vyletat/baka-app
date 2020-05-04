@@ -31,22 +31,23 @@ class AddController implements IController
     //-------------------------------------------- START OF CALCULATION ------------------------------------------------
 
     /**
+     * Hlavní metoda pro výpočet ohodnocení incidentu.
      *
-     *
-     * @param int $method
-     * @param int $sla_time
-     * @param int $urgency
-     * @param int $reproductive
-     * @param int $project_phase
-     * @param int $number_of_affective_machines
-     * @param int $impact
-     * @return int|mixed
+     * @param int $method Metoda, podle které se bude počítat.
+     * @param int $sla_time SLA čas
+     * @param int $urgency Naléhavost
+     * @param int $reproductive Reprodukovatelnost
+     * @param int $project_phase Projektová fáze
+     * @param int $number_of_affective_machines Počet ovlivněných strojů
+     * @param int $impact Dopad
+     * @return int|mixed                            normalizované ohodnocení
      */
     function calculateIncident(int $method, $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
     {
+        // Získání parametrů metody, podle které se bude počítat.
         $options = $this->file->getMethodParams($method);
-        //return $options;
         $values = array();
+        // Výpočet kritérií a jejich atributů.
         foreach ($options['criteria'] as $criterion_name => $criterion) {
             if ($criterion['contains'] == true) {
                 switch ($criterion_name) {
@@ -106,12 +107,12 @@ class AddController implements IController
                         break;
 
                     default:
-
+                        //TODO
                 }
             }
         }
 
-        //metoda
+        // Nastavení jestli se bude sčítat nebo násobit.
         $result = 0.0;
         switch ($options['other']['method']) {
             case "multiply":
@@ -127,7 +128,7 @@ class AddController implements IController
                 break;
         }
 
-        //normalize
+        // Normalizování výsledku.
         if ($options['priority']['normalize'] == true) {
             $normalizeResult = ($result - $options['priority']['min']) / ($options['priority']['max'] - $options['priority']['min']);
             $result = floatval($normalizeResult);
@@ -142,7 +143,8 @@ class AddController implements IController
      * @param $weight       Váha SLA krotéria šas.
      * @return float|int    Vážená hodnota kritéria SLA času.
      */
-    function calculateSlaTime($sla_time, $weight) {
+    function calculateSlaTime($sla_time, $weight)
+    {
         $max = 4230.0;
         $value = 0.0;
         if ($sla_time > $max) {
@@ -156,12 +158,13 @@ class AddController implements IController
     /**
      * Metoda vrací podle nastavení metody a ohodnocení prioritu incidentu.
      *
-     * @param int $method   Metoda, podle které chcete určit prioritu.
+     * @param int $method Metoda, podle které chcete určit prioritu.
      * @param $rating       Ohodnocení incidentu.
      * @return int          Číslo priority incedentu.
      */
     function calculatePriority(int $method, $rating)
     {
+        // Získání parametrů metody, podle které se bude počítat.
         $options = $this->file->getMethodParams($method);
         switch ($options['priority']['order']) {
             case "asc":
@@ -216,11 +219,12 @@ class AddController implements IController
 
     /**
      * Funkce sloužící pro náhodné generování stringu.
-     *
      * @param int $length Délka řetězce, který chcete vygenerovat.
      * @return string       Vygenerovaný řetězec.
      *
      * https://stackoverflow.com/questions/4356289/php-random-string-generator
+     * @deprecated Tuto metodu nahradila metoda @method generateDateAndNumber
+     *
      */
     function generateRandomString(int $length = 10): string
     {
@@ -260,13 +264,10 @@ class AddController implements IController
         return $incidents;
     }
 
-    //osetreni
-    //1 - zjisteni, jestli jsou v URL
-    //2 - osetreni vstupu
     /**
+     * Metoda pro ověření, jestli jsou zdány všechny požadované parametry incidentu.
      *
-     *
-     * @return bool
+     * @return bool     Vrátí true/false podle výsledku.
      */
     function isSetAllParams(): bool
     {
@@ -279,9 +280,10 @@ class AddController implements IController
     }
 
     /**
+     * Metoda pro validaci incidentu a vytvoření alertu.
+     * @return array    Alert s true/false a obsahem.
+     * @deprecated Nahrazena funkcionalita v metodě @method show
      *
-     *
-     * @return array
      */
     function paramsValidation(): array
     {
@@ -315,7 +317,7 @@ class AddController implements IController
      * @param string $data Neošetřená data.
      * @return string       Řetězec očetřených dat.
      *
-     * https://www.w3schools.com/php/php_form_validation.asp
+     * @link https://www.w3schools.com/php/php_form_validation.asp
      */
     function testInput(string $data): string
     {
@@ -326,7 +328,7 @@ class AddController implements IController
     }
 
     /**
-     *
+     * TODO
      */
     function addAllParams()
     {
@@ -345,12 +347,11 @@ class AddController implements IController
      */
     public function show(string $pageTitle): string
     {
-        //// vsechna data sablony budou globalni
+        // vsechna data sablony budou globalni
         global $tplData;
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
-
 
         //pro add s konkretnimy hodnotami
         if (isset($_GET['reproductive'])) {
@@ -372,7 +373,6 @@ class AddController implements IController
         if (isset($_GET['generate-number'])) {
             $incidents = $this->generateRandomIncident($_GET['generate-number']);
             foreach ($incidents as $incident) {
-                //TODO udelat metodu pro add bez expected
                 $ok = $this->db->addIncident($incident['name'], intval($incident['sla-time']), intval($incident['urgency']), intval($incident['reproductive']), intval($incident['project-phase']), intval($incident['number-of-affective-machines']), intval($incident['impact']), 1);
                 if ($ok) {
                     $tplData['add_generate_status'] = true;

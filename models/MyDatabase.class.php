@@ -437,11 +437,7 @@ class MyDatabase
         incident.priority_4_rating AS 'rating_4',
         incident.priority_4 AS 'priority_4',
         incident.priority_5_rating AS 'rating_5',
-        incident.priority_5 AS 'priority_5',
-        incident.priority_6_rating AS 'rating_6',
-        incident.priority_6 AS 'priority_6',
-        incident.priority_7_rating AS 'rating_7',
-        incident.priority_7 AS 'priority_7'
+        incident.priority_5 AS 'priority_5'
         FROM
         incident
         INNER JOIN impact ON incident.impact = impact.id_IMPACT

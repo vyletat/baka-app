@@ -1,21 +1,23 @@
 <?php
 // nactu rozhrani kontroleru
-require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
+require_once(DIRECTORY_CONTROLLERS . "/IController.interface.php");
 
 /**
  * Ovladac zajistujici vypsani stránky s tabulkou.
  */
-class TableController implements IController {
+class TableController implements IController
+{
 
-    /** @var DatabaseModel $db  Sprava databaze. */
+    /** @var DatabaseModel $db Sprava databaze. */
     private $db;
 
     /**
      * Inicializace pripojeni k databazi.
      */
-    public function __construct() {
+    public function __construct()
+    {
         // inicializace prace s DB
-        require_once (DIRECTORY_MODELS ."/MyDatabase.class.php");
+        require_once(DIRECTORY_MODELS . "/MyDatabase.class.php");
         $this->db = new MyDatabase();
     }
 
@@ -25,7 +27,8 @@ class TableController implements IController {
      * @param $incidents    Pole s daty o incidentech.
      * @return string       Výpis tabulky v šabloně.
      */
-    function createTable(array $incidents):string {
+    function createTable(array $incidents): string
+    {
         $heads = array("ID", "Name", "SLA Time", "Impact", "Urgency", "Project Phase", "Number of Affective Machines", "Reproductive", "Expected Priority");
         $table = "<table id='table-incidents' class=\"table table-striped\"><thead class=\"thead-dark\"><tr>";
         foreach ($heads as $head) {
@@ -49,7 +52,8 @@ class TableController implements IController {
      * @param $arrayId  Pole s ID incidentu ke smazani.
      * @return bool     True, pokud je delete v databázi ok, jinak false.
      */
-    function deleteIncidents($arrayId) {
+    function deleteIncidents($arrayId)
+    {
         foreach ($arrayId as $id) {
             $ok = $this->db->deleteIncident($id);
             if ($ok == false) {
@@ -62,10 +66,11 @@ class TableController implements IController {
     /**
      * Funkce pro rozdělení a získání všech ID ze zadaného řetězce pro smazání incidentů z databáze.
      *
-     * @param string $deteleString      Řetězec s příkazy.
+     * @param string $deteleString Řetězec s příkazy.
      * @return array                    Pole s ID pro smazání.
      */
-    function splitDelete(string $deteleString):array {
+    function splitDelete(string $deteleString): array
+    {
         $idDelete = array();
         $deleteArray = explode(",", $deteleString);
         foreach ($deleteArray as $string) {
@@ -81,15 +86,33 @@ class TableController implements IController {
         return $idDelete;
     }
 
+    //TODO osetreni vstupu
+
+    /**
+     * Metoda pro ošetření textových vstupních dat.
+     *
+     * @param string $data Neošetřená data.
+     * @return string       Řetězec očetřených dat.
+     *
+     * @link https://www.w3schools.com/php/php_form_validation.asp
+     */
+    function testInput(string $data): string
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
     /**
      * Vratí obsah stránky s tabulkou.
      *
-     * @param string $pageTitle     Název stránky.
+     * @param string $pageTitle Název stránky.
      * @return string               Výpis v šabloně.
      */
-    public function show(string $pageTitle):string {
-        //// vsechna data sablony budou globalni
+    public function show(string $pageTitle): string
+    {
+        // vsechna data sablony budou globalni
         global $tplData;
         $tplData = [];
         // nazev
@@ -110,17 +133,14 @@ class TableController implements IController {
             }
         }
 
-        // data pohadek
-        $tplData['urgency'] = $this->db->getUrgency();
-        $tplData['impact'] = $this->db->getImpact();
         $incidents = $this->db->incidentsToTable();
         $tplData['table'] = $this->createTable($incidents);
 
-        //// vypsani prislusne sablony
+        // vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony
         ob_start();
         // pripojim sablonu, cimz ji i vykonam
-        require(DIRECTORY_VIEWS ."/TableTemplate.tpl.php");
+        require(DIRECTORY_VIEWS . "/TableTemplate.tpl.php");
         // ziskam obsah output bufferu, tj. vypsanou sablonu
         $obsah = ob_get_clean();
 
@@ -128,4 +148,5 @@ class TableController implements IController {
         return $obsah;
     }
 }
+
 ?>

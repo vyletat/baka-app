@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////
 
 /**
- * Class MyFileHandler Třída zpracovávající soubory
+ * Class MyFileHandler Třída zpracovávající soubory.
  */
 class MyFileHandler
 {
@@ -24,10 +24,10 @@ class MyFileHandler
     }
 
     /**
+     * Načtení souboru.
      *
-     *
-     * @param string $filePath
-     * @return false|string
+     * @param string $filePath Cesta k souboru.
+     * @return false|string     Vrátí null nebo data souboru.
      */
     function loadFile(string $filePath)
     {
@@ -35,28 +35,26 @@ class MyFileHandler
             $data = file_get_contents($filePath) or die("The file can't be open.");
             return $data;
         }
+        return null;
     }
 
     /**
+     * Dekóduje data z JSONu.
      *
-     *
-     * @param $data
-     * @return mixed
+     * @param $data     Data
+     * @return mixed    Dekódovaná data v asociacnim poli
      */
     function decodeJSONFile($data)
     {
-        // Get the contents of the JSON file
-        // $strJsonFileContents = file_get_contents(DIRECTORY_CONFIG . "/" . self::METHOD_DN);
         // Convert to array
         return $options = json_decode($data, true);
-        //return $options = json_decode($data);
     }
 
     /**
-     * Metoda na zaklade vstupniho cisla bude vracet soubor s config.
+     * Metoda na zaklade vstupniho cisla vrací dekódovaný soubor s config.
      *
-     * @param int $number
-     * @return mixed
+     * @param int $number Cislo metody
+     * @return mixed        Dekódovaná data v asociacnim poli
      */
     function getMethodParams(int $number)
     {
@@ -66,26 +64,18 @@ class MyFileHandler
                 return $options = $this->decodeJSONFile($rawData);
 
             case 2:
-                $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_ROZ);
-                return $options = $this->decodeJSONFile($rawData);
-
-            case 3:
-                $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_BOD);
-                return $options = $this->decodeJSONFile($rawData);
-
-            case 4:
                 $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_RS);
                 return $options = $this->decodeJSONFile($rawData);
 
-            case 5:
+            case 3:
                 $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_RR);
                 return $options = $this->decodeJSONFile($rawData);
 
-            case 6:
+            case 4:
                 $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_RE);
                 return $options = $this->decodeJSONFile($rawData);
 
-            case 7:
+            case 5:
                 $rawData = $this->loadFile(DIRECTORY_CONFIG . "/" . self::METHOD_ROC);
                 return $options = $this->decodeJSONFile($rawData);
 

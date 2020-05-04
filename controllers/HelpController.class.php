@@ -1,30 +1,32 @@
 <?php
 // nactu rozhrani kontroleru
-require_once(DIRECTORY_CONTROLLERS."/IController.interface.php");
+require_once(DIRECTORY_CONTROLLERS . "/IController.interface.php");
 
 /**
  * Ovladac zajistujici vypsani stránky s nápovědou.
  */
-class HelpController implements IController {
+class HelpController implements IController
+{
 
     /**
      * Vratí obsah stránky s infimacemi.
      *
-     * @param string $pageTitle     Název stránky.
+     * @param string $pageTitle Název stránky.
      * @return string               Výpis v šabloně.
      */
-    public function show(string $pageTitle):string {
-        //// vsechna data sablony budou globalni
+    public function show(string $pageTitle): string
+    {
+        // vsechna data sablony budou globalni
         global $tplData;
         $tplData = [];
         // nazev
         $tplData['title'] = $pageTitle;
 
-        //// vypsani prislusne sablony
+        // vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony
         ob_start();
         // pripojim sablonu, cimz ji i vykonam
-        require(DIRECTORY_VIEWS ."/HelpTemplate.tpl.php");
+        require(DIRECTORY_VIEWS . "/HelpTemplate.tpl.php");
         // ziskam obsah output bufferu, tj. vypsanou sablonu
         $obsah = ob_get_clean();
 
@@ -32,4 +34,5 @@ class HelpController implements IController {
         return $obsah;
     }
 }
+
 ?>

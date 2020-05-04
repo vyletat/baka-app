@@ -8,7 +8,6 @@ require_once(DIRECTORY_CONTROLLERS . "/IController.interface.php");
 class CalculationController implements IController
 {
 
-
     /** @var DatabaseModel $db Sprava databaze. */
     private $db;
 
@@ -96,18 +95,8 @@ class CalculationController implements IController
                 $incidents = $this->db->incidentsToTableRating(5);
                 break;
 
-            case 6:
-                array_push($heads, "Rating", "Priority");
-                $incidents = $this->db->incidentsToTableRating(6);
-                break;
-
-            case 7:
-                array_push($heads, "Rating", "Priority");
-                $incidents = $this->db->incidentsToTableRating(7);
-                break;
-
             default:
-                array_push($heads, "Rating 1", "Priority 1", "Rating 2", "Priority 2", "Rating 3", "Priority 3", "Rating 4", "Priority 4", "Rating 5", "Priority 5", "Rating 6", "Priority 6", "Rating 7", "Priority 7");
+                array_push($heads, "Rating 1", "Priority 1", "Rating 2", "Priority 2", "Rating 3", "Priority 3", "Rating 4", "Priority 4", "Rating 5", "Priority 5");
                 $incidents = $this->db->incidentsToTableAll();
         }
         return $this->creteTable($heads, $incidents);
@@ -116,22 +105,23 @@ class CalculationController implements IController
     //-------------------------------------------- START OF CALCULATION ------------------------------------------------
 
     /**
+     * Hlavní metoda pro výpočet ohodnocení incidentu.
      *
-     *
-     * @param int $method
-     * @param int $sla_time
-     * @param int $urgency
-     * @param int $reproductive
-     * @param int $project_phase
-     * @param int $number_of_affective_machines
-     * @param int $impact
-     * @return int|mixed
+     * @param int $method Metoda, podle které se bude počítat.
+     * @param int $sla_time SLA čas
+     * @param int $urgency Naléhavost
+     * @param int $reproductive Reprodukovatelnost
+     * @param int $project_phase Projektová fáze
+     * @param int $number_of_affective_machines Počet ovlivněných strojů
+     * @param int $impact Dopad
+     * @return int|mixed                            normalizované ohodnocení
      */
     function calculateIncident(int $method, $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
     {
+        // Získání parametrů metody, podle které se bude počítat.
         $options = $this->file->getMethodParams($method);
-        //return $options;
         $values = array();
+        // Výpočet kritérií a jejich atributů.
         foreach ($options['criteria'] as $criterion_name => $criterion) {
             if ($criterion['contains'] == true) {
                 switch ($criterion_name) {
@@ -195,7 +185,8 @@ class CalculationController implements IController
                 }
             }
         }
-        //metoda
+
+        // Nastavení jestli se bude sčítat nebo násobit.
         $result = 0.0;
         switch ($options['other']['method']) {
             case "multiply":
@@ -211,7 +202,7 @@ class CalculationController implements IController
                 break;
         }
 
-        //normalize
+        // Normalizování výsledku.
         if ($options['priority']['normalize'] == true) {
             $normalizeResult = ($result - $options['priority']['min']) / ($options['priority']['max'] - $options['priority']['min']);
             $result = floatval($normalizeResult);
@@ -220,11 +211,11 @@ class CalculationController implements IController
     }
 
     /**
+     * Metoda pro výpočet SLA času.
      *
-     *
-     * @param $sla_time
-     * @param $weight
-     * @return float|int
+     * @param $sla_time     Hodnota v intervalu <0; 1>.
+     * @param $weight       Váha SLA krotéria šas.
+     * @return float|int    Vážená hodnota kritéria SLA času.
      */
     function calculateSlaTime($sla_time, $weight)
     {
@@ -239,14 +230,15 @@ class CalculationController implements IController
     }
 
     /**
+     * Metoda vrací podle nastavení metody a ohodnocení prioritu incidentu.
      *
-     *
-     * @param int $method
-     * @param $rating
-     * @return int
+     * @param int $method Metoda, podle které chcete určit prioritu.
+     * @param $rating       Ohodnocení incidentu.
+     * @return int          Číslo priority incedentu.
      */
     function calculatePriority(int $method, $rating)
     {
+        // Získání parametrů metody, podle které se bude počítat.
         $options = $this->file->getMethodParams($method);
         switch ($options['priority']['order']) {
             case "asc":
@@ -303,10 +295,11 @@ class CalculationController implements IController
      * Metoda pro vygenerování a stažení XLS souboru.
      *
      * @param $array    Pole s parametry.
+     *
+     * @link https://stackoverflow.com/questions/10424847/export-an-array-of-arrays-to-excel-in-php
      */
     function downloadXls($array)
     {
-        // https://stackoverflow.com/questions/10424847/export-an-array-of-arrays-to-excel-in-php
         header("Content-Disposition: attachment; filename=\"INCIDENTS.xls\"");
         header("Content-Type: application/vnd.ms-excel;");
         header("Pragma: no-cache");
@@ -321,7 +314,7 @@ class CalculationController implements IController
     /**
      * Vratí obsah stránky s metadami.
      *
-     * @param string $pageTitle     Název stránky.
+     * @param string $pageTitle Název stránky.
      * @return string               Výpis v šabloně.
      */
     public function show(string $pageTitle): string
@@ -329,14 +322,10 @@ class CalculationController implements IController
 
         if (isset($_POST['download'])) {
             if ($_POST['download'] == "xls") {
-                $headerArray = array('id', 'name', 'sla_time', 'urgency', 'reproductive', 'project_phase', 'number_of_effective_machines', 'impact', 'expected_priority', 'priority_1', 'priority_2', 'priority_3', 'priority_4', 'priority_5', 'priority_6', 'priority_7', 'priority_1_rating', 'priority_2_rating', 'priority_3_rating', 'priority_4_rating', 'priority_5_rating', 'priority_6_rating', 'priority_7_rating');
+                $headerArray = array('id', 'name', 'sla_time', 'urgency', 'reproductive', 'project_phase', 'number_of_effective_machines', 'impact', 'expected_priority', 'priority_1', 'priority_2', 'priority_3', 'priority_4', 'priority_5', 'priority_1_rating', 'priority_2_rating', 'priority_3_rating', 'priority_4_rating', 'priority_5_rating');
                 $arrayIncidents = $this->db->getIncident();
                 $array = array();
                 array_push($array, $headerArray);
-                //$headerArray array(`id`, `name`, `sla_time`, `urgency`, `reproductive`, `project_phase`, `number_of_effective_machines`, `impact`, `expected_priority`, `priority_1`, `priority_2`, `priority_3`, `priority_4`, `priority_5`, `priority_6`, `priority_7`, `priority_1_rating`, `priority_2_rating`, `priority_3_rating`, `priority_4_rating`, `priority_5_rating`, `priority_6_rating`, `priority_7_rating`));
-                //array_push($array, ($this->db->getIncident()));
-                /*$this->xml->setParams("Incidents.xls", $headerArray, $this->db->getIncident());
-                $this->xml->sendFile();*/
                 foreach ($arrayIncidents as $row) {
                     array_push($array, $row);
                 }
@@ -344,7 +333,7 @@ class CalculationController implements IController
             }
         }
 
-        //// vsechna data sablony budou globalni
+        // vsechna data sablony budou globalni
         global $tplData;
         $tplData = [];
         // nazev
@@ -360,7 +349,7 @@ class CalculationController implements IController
             $tplData['table'] = $this->option($_POST['calculation-method']);
         }
 
-        //// vypsani prislusne sablony
+        // vypsani prislusne sablony
         // zapnu output buffer pro odchyceni vypisu sablony
         ob_start();
         // pripojim sablonu, cimz ji i vykonam

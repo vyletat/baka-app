@@ -4,19 +4,16 @@
 //////////////////////////////////////////////////////////////////
 
 //// Pripojeni k databazi ////
-
 /** Adresa serveru. */
-define("DB_SERVER","localhost"); // https://students.kiv.zcu.cz
+define("DB_SERVER", "localhost"); // https://students.kiv.zcu.cz
 /** Nazev databaze. */
-define("DB_NAME","baka-database");
+define("DB_NAME", "baka-database");
 /** Uzivatel databaze. */
-define("DB_USER","root");
+define("DB_USER", "root");
 /** Heslo uzivatele databaze */
-define("DB_PASS","");
-
+define("DB_PASS", "");
 
 //// Nazvy tabulek v DB ////
-
 /** Tabulky s daty. */
 define("TABLE_INCIDENT", "incident");
 define("TABLE_URGENCY", "urgency");
@@ -25,7 +22,6 @@ define("TABLE_PROJECT_PHASE", "project_phase");
 define("TABLE_NUMBER_OF_AFFECTIVE_MACHINES", "number_of_affective_machines");
 define("TABLE_REPRODUCTIVE", "reproductive");
 define("TABLE_PRIORITY", "priority");
-
 
 //// Dostupne stranky webu ////
 /** Adresar kontroleru. */
@@ -79,13 +75,14 @@ const WEB_PAGES = array(
         "file_name" => "VisualizationController.class.php",
         "class_name" => "VisualizationController",
         "title" => "Prioritization · Visualization",
-        "name" => "Help"
+        "name" => "Visualization"
     )
-    // TODO - doplnit spravu uzivatelu
 );
 
 /** Klic defaultni webove stranky. */
 const DEFAULT_WEB_PAGE_KEY = "home";
-const ALL_METHODS = array(1,2,3,4,5,6,7);
+
+/** Pole pro průchod metod */
+const ALL_METHODS = array(1, 2, 3, 4, 5);
 
 ?>

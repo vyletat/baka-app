@@ -40,27 +40,19 @@
                     <label class="form-check-label" for="first-radio">Diebold Nixdorf default method</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="second-radio" value="2">
-                    <label class="form-check-label" for="second-radio">Method rozsirena</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="third-radio" value="3">
-                    <label class="form-check-label" for="third-radio">Method bodovaci</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="forth-radio" value="4">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="forth-radio" value="2">
                     <label class="form-check-label" for="forth-radio">Method rank sum</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="fifth-radio" value="5">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="fifth-radio" value="3">
                     <label class="form-check-label" for="fifth-radio">Method rank reciprocal</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="sixth-radio" value="6">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="sixth-radio" value="4">
                     <label class="form-check-label" for="sixth-radio">Method rank exponent</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="calculation-method" id="seventh-radio" value="7">
+                    <input class="form-check-input" type="radio" name="calculation-method" id="seventh-radio" value="5">
                     <label class="form-check-label" for="seventh-radio">Method rank order centroid</label>
                 </div>
                 <button type="submit" class="btn btn-primary col-sm-3" id="submit-method"><i class="far fa-eye"></i>
@@ -73,7 +65,8 @@
                 <form action="" method="post">
                     <input type="hidden" name="page" value="methods"/>
                     <input type="hidden" value="true" name="refresh">
-                    <button type="submit" class="btn btn-warning button-calculation"><i class="fas fa-redo-alt"></i> Recalculate incidents
+                    <button type="submit" class="btn btn-warning button-calculation"><i class="fas fa-redo-alt"></i>
+                        Recalculate incidents
                     </button>
                 </form>
             </div>
@@ -81,7 +74,8 @@
                 <form action="" method="post">
                     <input type="hidden" name="page" value="methods"/>
                     <input type="hidden" value="xls" name="download">
-                    <button type="submit" class="btn btn-info button-calculation"><i class="fas fa-file-excel"></i> Download excel sheet
+                    <button type="submit" class="btn btn-info button-calculation"><i class="fas fa-file-excel"></i>
+                        Download excel sheet
                     </button>
                 </form>
             </div>
@@ -100,9 +94,9 @@
     if (array_key_exists('table', $tplData)) {
         echo $tplData['table'];
     } else {
-    ?>
+        ?>
         <p>Choose one option bellow for the table of results.</p>
-    <?php
+        <?php
     }
     ?>
 

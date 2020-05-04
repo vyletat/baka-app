@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $tplData['title']; ?></title>
 
     <!-- Nacteni sablony s hlavickou a odkazy stranky -->
     <?php
-    include ("./views/elem/HeadTemplate.tpl.php");
+    include("./views/elem/HeadTemplate.tpl.php");
     ?>
 </head>
 <body>
@@ -23,32 +24,20 @@
 
 <div class="container">
 
-    <?php
-    /*echo "rating1:";
-        var_dump($tplData['values1']);
-    echo "<br> prio1:";
-    var_dump($tplData['priority1']);
-    echo "<br> rating2:";
-    var_dump($tplData['values2']);
-    echo "<br> prio2:";
-    var_dump($tplData['priority2']);
-    echo "<br> time:";
-    var_dump($tplData['time']);*/
-    ?>
-
     <div class="row">
         <div class="col-sm-11">
             <!-- Form for generate one specific incident -->
             <fieldset>
                 <legend>Add specific incident</legend>
-                <form  method="get" action="">
+                <form method="get" action="">
                     <!-- Hidden input for MVC page add -->
-                    <input type="hidden" name="page" value="add" />
+                    <input type="hidden" name="page" value="add"/>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="name">Name of incident</label>
-                                <input type="text" class="form-control" id="name" placeholder="Type a name..." name="name">
+                                <input type="text" class="form-control" id="name" placeholder="Type a name..."
+                                       name="name">
                             </div>
 
                             <div class="form-group">
@@ -73,7 +62,8 @@
 
                             <div class="form-group">
                                 <label for="number-of-affective-machines">Number of affective machines</label>
-                                <select class="form-control" id="number-of-affective-machines" name="number-of-affective-machines" required>
+                                <select class="form-control" id="number-of-affective-machines"
+                                        name="number-of-affective-machines" required>
                                     <option value="1">more than 1000</option>
                                     <option value="2">101-1000</option>
                                     <option value="3">11-100</option>
@@ -104,7 +94,8 @@
 
                             <div class="form-group">
                                 <label for="sla-time">SLA time</label>
-                                <input type="number" class="form-control" id="sla-time" name="sla-time" min="1" max="525600" required>
+                                <input type="number" class="form-control" id="sla-time" name="sla-time" min="1"
+                                       max="525600" required>
                                 <small class="form-text text-muted">Max value 525 600</small>
                             </div>
 
@@ -121,7 +112,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success col-sm-3" id="add-incident-button"><i class="fas fa-plus"></i> Add</button>
+                    <button type="submit" class="btn btn-success col-sm-3" id="add-incident-button"><i
+                                class="fas fa-plus"></i> Add
+                    </button>
                 </form>
             </fieldset>
 
@@ -152,15 +145,18 @@
                 <legend>Generate random incidents</legend>
                 <form action="" method="get">
                     <!-- Hidden input for MVC page add -->
-                    <input type="hidden" name="page" value="add" />
+                    <input type="hidden" name="page" value="add"/>
                     <div class="col-sm-6 row">
                         <div class="form-group">
                             <label for="generator-number">Number of incidents you can generate</label>
-                            <input type="number" min="1" max="100" class="form-control" id="generator-number" value="1" name="generate-number">
+                            <input type="number" min="1" max="100" class="form-control" id="generator-number" value="1"
+                                   name="generate-number">
                             <small class="form-text text-muted">Max value 100 in one process</small>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success col-sm-3" id="generate-incident-button"><i class="fas fa-database"></i> Generate</button>
+                    <button type="submit" class="btn btn-success col-sm-3" id="generate-incident-button"><i
+                                class="fas fa-database"></i> Generate
+                    </button>
                 </form>
             </fieldset>
 
@@ -187,7 +183,8 @@
             ?>
         </div>
         <div class="col-sm-1">
-            <button class="btn btn-primary" style="height: 100%" onclick="window.location.href = '?page=table'"><i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-primary" style="height: 100%" onclick="window.location.href = '?page=table'"><i
+                        class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 </div>
@@ -195,6 +192,6 @@
 
 <!-- Nacteni sablony se zápatím stránky. -->
 <?php
-include ("./views/elem/FooterTemplate.tml.php");
+include("./views/elem/FooterTemplate.tml.php");
 ?>
 </html>

@@ -3,15 +3,16 @@
 /**
  * Rozhrani pro vsechny ovladace (kontrolery).
  */
-interface IController {
+interface IController
+{
 
     /**
      * Zajisti vypsani prislusne stranky.
      *
-     * @param string $pageTitle     Nazev stanky.
+     * @param string $pageTitle Nazev stanky.
      * @return string               HTML prislusne stranky.
      */
-    public function show(string $pageTitle):string;
+    public function show(string $pageTitle): string;
 
 }
 

@@ -1,29 +1,33 @@
 <?php
 
 /**
- * Class MyCalculation
+ * Třída pro kalkulace incidentů
+ *
+ * Na tuto tridu nejsou zatím incidenty napojeny.
  */
-class MyCalculation {
+class MyCalculation
+{
 
 //-------------------------------------------- START OF CALCULATION ------------------------------------------------
 
     /**
+     * Hlavní metoda pro výpočet ohodnocení incidentu.
      *
-     *
-     * @param int $method
-     * @param int $sla_time
-     * @param int $urgency
-     * @param int $reproductive
-     * @param int $project_phase
-     * @param int $number_of_affective_machines
-     * @param int $impact
-     * @return int|mixed
+     * @param int $method Metoda, podle které se bude počítat.
+     * @param int $sla_time SLA čas
+     * @param int $urgency Naléhavost
+     * @param int $reproductive Reprodukovatelnost
+     * @param int $project_phase Projektová fáze
+     * @param int $number_of_affective_machines Počet ovlivněných strojů
+     * @param int $impact Dopad
+     * @return int|mixed                            normalizované ohodnocení
      */
     function calculateIncident(int $method, $sla_time, int $urgency, int $reproductive, int $project_phase, int $number_of_affective_machines, int $impact)
     {
+        // Získání parametrů metody, podle které se bude počítat.
         $options = $this->file->getMethodParams($method);
-        //return $options;
         $values = array();
+        // Výpočet kritérií a jejich atributů.
         foreach ($options['criteria'] as $criterion_name => $criterion) {
             if ($criterion['contains'] == true) {
                 switch ($criterion_name) {
@@ -87,7 +91,8 @@ class MyCalculation {
                 }
             }
         }
-        //metoda
+
+        // Nastavení jestli se bude sčítat nebo násobit.
         $result = 0.0;
         switch ($options['other']['method']) {
             case "multiply":
@@ -103,7 +108,7 @@ class MyCalculation {
                 break;
         }
 
-        //normalize
+        // Normalizování výsledku.
         if ($options['priority']['normalize'] == true) {
             $normalizeResult = ($result - $options['priority']['min']) / ($options['priority']['max'] - $options['priority']['min']);
             $result = floatval($normalizeResult);
@@ -112,13 +117,14 @@ class MyCalculation {
     }
 
     /**
+     * Metoda pro výpočet SLA času.
      *
-     *
-     * @param $sla_time
-     * @param $weight
-     * @return float|int
+     * @param $sla_time     Hodnota v intervalu <0; 1>.
+     * @param $weight       Váha SLA krotéria šas.
+     * @return float|int    Vážená hodnota kritéria SLA času.
      */
-    function calculateSlaTime($sla_time, $weight) {
+    function calculateSlaTime($sla_time, $weight)
+    {
         $max = 4230.0;
         $value = 0.0;
         if ($sla_time > $max) {
@@ -130,11 +136,11 @@ class MyCalculation {
     }
 
     /**
+     * Metoda vrací podle nastavení metody a ohodnocení prioritu incidentu.
      *
-     *
-     * @param int $method
-     * @param $rating
-     * @return int
+     * @param int $method Metoda, podle které chcete určit prioritu.
+     * @param $rating       Ohodnocení incidentu.
+     * @return int          Číslo priority incedentu.
      */
     function calculatePriority(int $method, $rating)
     {

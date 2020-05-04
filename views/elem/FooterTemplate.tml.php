@@ -1,7 +1,8 @@
-<!-- Footer with information -->
+<!-- Footer with informations -->
 <footer class="container">
     <hr>
     <div class="footer-list row justify-content-around">
+        <!-- Page list -->
         <div class="col-1">
             <h5>Content:</h5>
         </div>
@@ -34,6 +35,8 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Company adress -->
         <div class="col-1">
             <h5>Adress:</h5>
         </div>
@@ -46,21 +49,32 @@
                 301 00
             </p>
         </div>
+
+        <!-- Link to company pages -->
         <div class="col-sm-2">
             <ul class="list-unstyled text-small">
                 <li>
-                    <a href="https://www.dieboldnixdorf.com/en-us" target="_blank"><i class="fas fa-globe-europe"></i> Diebold Nixdorf</a>
+                    <a href="https://www.dieboldnixdorf.com/en-us" target="_blank"><i class="fas fa-globe-europe"></i>
+                        Diebold Nixdorf</a>
                 </li>
                 <li>
-                    <a href="https://www.dnpilsen.cz" target="_blank"><i class="fas fa-building"></i> Diebold Nixdorf Pilsen</a>
+                    <a href="https://www.dnpilsen.cz" target="_blank"><i class="fas fa-building"></i> Diebold Nixdorf
+                        Pilsen</a>
+                </li>
+                <!-- Code documentation of the app -->
+                <li>
+                    <a href="" target="_blank"><i class="fas fa-book"></i> Documentation</a>
                 </li>
             </ul>
         </div>
     </div>
+
+    <!-- Informations about author -->
     <div class="footer-author">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <small>Tomáš Vyleta, <a href="mailto:vyleta.tom@gmail.com">vyletat@students.zcu.cz</a>, 2019-2020</small>
+                <small>Tomáš Vyleta, <a href="mailto:vyleta.tom@gmail.com">vyletat@students.zcu.cz</a>,
+                    2019-2020</small>
             </div>
         </div>
         <div class="row justify-content-center">
