@@ -51,7 +51,7 @@ const WEB_PAGES = array(
         "file_name" => "TableController.class.php",
         "class_name" => "TableController",
         "title" => "Prioritization · Table",
-        "name" => "incidents Table"
+        "name" => "incidents table"
     ),
     "methods" => array(
         "file_name" => "CalculationController.class.php",

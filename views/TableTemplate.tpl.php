@@ -53,7 +53,6 @@
         });
     </script>
 
-    <!--TODO-->
     <fieldset id="fieldset-delete">
         <legend>Delete incident</legend>
         <form action="" method="post">

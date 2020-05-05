@@ -71,6 +71,7 @@ class TableController implements IController
      */
     function splitDelete(string $deteleString): array
     {
+        //TODO osetreni vstupu
         $idDelete = array();
         $deleteArray = explode(",", $deteleString);
         foreach ($deleteArray as $string) {
@@ -85,8 +86,6 @@ class TableController implements IController
         }
         return $idDelete;
     }
-
-    //TODO osetreni vstupu
 
     /**
      * Metoda pro ošetření textových vstupních dat.

@@ -89,7 +89,7 @@
     let pie_data = [<?php echo json_encode(($tplData['data'][0])); ?>];
     let pie_labels = [<?php echo json_encode(($tplData['data'][1])); ?>];
     let pie_elements = [<?php echo json_encode(($tplData['data'][2]))?>];
-    let charts_id = ['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5', 'chart-6', 'chart-7', 'chart-8', 'chart-9', 'chart-10', 'chart-11', 'chart-12', 'chart-13'];
+    let charts_id = ['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5', 'chart-6', 'chart-7', 'chart-8', 'chart-9', 'chart-10', 'chart-11'];
 
     for (i = 0; i < charts_id.length; i++) {
         var ctx = document.getElementById(charts_id[i]).getContext('2d');

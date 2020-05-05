@@ -107,7 +107,7 @@ class AddController implements IController
                         break;
 
                     default:
-                        //TODO
+                        break;
                 }
             }
         }
@@ -273,42 +273,67 @@ class AddController implements IController
     {
         $statement = false;
         //required params
-        if (isset($_GET['reproductive']) && isset($_GET['sla-time']) && isset($_GET['urgency']) && isset($_GET['project-phase']) && isset($_GET['umber-of-affective-machines']) && isset($_GET['impact']) && isset($_GET['expected-priority'])) {
+        if (isset($_GET['reproductive']) && isset($_GET['sla-time']) && isset($_GET['urgency']) && isset($_GET['project-phase']) && isset($_GET['number-of-affective-machines']) && isset($_GET['impact']) && isset($_GET['expected-priority'])) {
             $statement = true;
         }
         return $statement;
     }
 
     /**
-     * Metoda pro validaci incidentu a vytvoření alertu.
-     * @return array    Alert s true/false a obsahem.
-     * @deprecated Nahrazena funkcionalita v metodě @method show
+     * Metoda pro vytvoření konkrétního incidentu s validací vstupních hodnot a vytvořením alertu.
      *
+     * @deprecated Metoda neni pouzivana z důvodu naplnění dat do tpldata.
+     *
+     * @return array    Vrátí pole se statusem pro alerty.
      */
-    function paramsValidation(): array
+    function specificIncident()
     {
         if ($this->isSetAllParams()) {
             if (isset($_GET['name'])) {
                 $name = $this->testInput($_GET['name']);
-                $ok = $this->db->addIncident($_GET['name'], intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
+                $ok = $this->db->addIncident($name, intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
             } else {
                 $ok = $this->db->addIncident('', intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
             }
             if ($ok) {
                 $status = true;
                 $alert = "<i class=\"far fa-laugh\"></i> Incident was successfully added.";
-                return array('add_status' => $status, 'add_alert' => $alert);
             } else {
                 $status = false;
                 $alert = "<i class=\"far fa-frown\"></i> Incident was NOT successfully added.";
-                //error
-                return array('add_status' => $status, 'add_alert' => $alert);
             }
+            $this->updateAllMethodsAndPriority();
+            return array('add_status' => $status, 'add_alert' => $alert);
         }
-        $status = false;
-        $alert = "<i class=\"far fa-frown\"></i> Incident was NOT successfully added.";
-        //error
-        return array('add_status' => $status, 'add_alert' => $alert);
+    }
+
+    /**
+     * Metoda pro přidani generovanych incidentua vytvořením alertu.
+     *
+     * @deprecated Metoda neni pouzivana z důvodu naplnění dat do tpldata.
+     *
+     * @return array    Vrátí pole se statusem pro alerty.
+     */
+    function generateIncident()
+    {
+        if (isset($_GET['generate-number'])) {
+            $incidents = $this->generateRandomIncident($_GET['generate-number']);
+            foreach ($incidents as $incident) {
+                $ok = $this->db->addIncident($incident['name'], intval($incident['sla-time']), intval($incident['urgency']), intval($incident['reproductive']), intval($incident['project-phase']), intval($incident['number-of-affective-machines']), intval($incident['impact']), 1);
+                if ($ok) {
+                    $status = true;
+                    $alert = "<i class=\"far fa-laugh\"></i> <strong>" . $_GET['generate-number'] . "</strong> incedents was successfully added.";
+                    continue;
+                } else {
+                    $status = false;
+                    $alert = "<i class=\"far fa-frown\"></i> Incidents was NOT successfully added.";
+                    break;
+                }
+            }
+            $this->updateAllMethodsAndPriority();
+            return array('add_status' => $status, 'add_alert' => $alert);
+        }
+
     }
 
     /**
@@ -328,18 +353,6 @@ class AddController implements IController
     }
 
     /**
-     * TODO
-     */
-    function addAllParams()
-    {
-        if (isset($_GET['name'])) {
-            $ok = $this->db->addIncident($_GET['name'], intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
-        } else {
-            $ok = $this->db->addIncident('', intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
-        }
-    }
-
-    /**
      * Vratí obsah uvodní stránky.
      *
      * @param string $pageTitle Název stránky.
@@ -354,11 +367,14 @@ class AddController implements IController
         $tplData['title'] = $pageTitle;
 
         //pro add s konkretnimy hodnotami
-        if (isset($_GET['reproductive'])) {
+        if ($this->isSetAllParams()) {
             if (isset($_GET['name'])) {
-                $ok = $this->db->addIncident($_GET['name'], intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
+                $name = $this->testInput($_GET['name']);
+                $ok = $this->db->addIncident($name, intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
+                $this->updateAllMethodsAndPriority();
             } else {
                 $ok = $this->db->addIncident('', intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
+                $this->updateAllMethodsAndPriority();
             }
             if ($ok) {
                 $tplData['add_status'] = true;
@@ -368,6 +384,18 @@ class AddController implements IController
                 $tplData['add_alert'] = "<i class=\"far fa-frown\"></i> Incident was NOT successfully added.";
             }
         }
+
+        /*// Pridani konkretniho incidentu
+        $specificAlert = $this->specificIncident();
+        foreach ($specificAlert as $key => $value) {
+            $tplData[$key] = $value;
+        }
+
+        // Pridani generovaneho incidentu
+        $generateIncident = $this->generateIncident();
+        foreach ($generateIncident as $key => $value) {
+            $tplData[$key] = $value;
+        }*/
 
         //pro add s generovanim
         if (isset($_GET['generate-number'])) {
@@ -384,6 +412,7 @@ class AddController implements IController
                     break;
                 }
             }
+            $this->updateAllMethodsAndPriority();
         }
 
         // vypsani prislusne sablony

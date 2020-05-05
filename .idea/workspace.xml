@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a99fd65-a9b0-40b6-ae22-20e2c780b680" name="Default Changelist" comment="" />
+    <list default="true" id="2a99fd65-a9b0-40b6-ae22-20e2c780b680" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AddController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AddController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/TableController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/TableController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ExportXLS.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/ChartsTemplate.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/ChartsTemplate.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/TableTemplate.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/TableTemplate.tpl.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +34,13 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,6 +83,7 @@
       <workItem from="1587040225503" duration="28000" />
       <workItem from="1587040635918" duration="18841000" />
       <workItem from="1587111994500" duration="3504000" />
+      <workItem from="1588702692862" duration="4813000" />
     </task>
     <task id="LOCAL-00001" summary="Config, file reader">
       <created>1587075990178</created>
