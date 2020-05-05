@@ -14,9 +14,6 @@ class CalculationController implements IController
     /** @var MyFileHandler $file Sprava souboru. */
     private $file;
 
-    /** @var MyFileHandler $file Sprava souboru. */
-    private $xml;
-
     /**
      * Inicializace pripojeni k databazi.
      */
@@ -29,10 +26,6 @@ class CalculationController implements IController
         // inicializace prace se souborem
         require_once(DIRECTORY_MODELS . "/MyFileHandler.class.php");
         $this->file = new MyFileHandler();
-
-        // inicializace prace se souborem
-        require_once(DIRECTORY_MODELS . "/ExportXLS.php");
-        $this->xml = new ExportXLS();
     }
 
     /**
