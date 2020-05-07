@@ -63,7 +63,7 @@ class ChartsController implements IController
      *
      * @return mixed    Počet incidentů.
      */
-    function getCountOfIncedents()
+    function getCountOfIncedents(): int
     {
         $count = $this->db->getCountIncident();
         return $count[0]['COUNT(`id`)'];

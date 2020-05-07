@@ -162,7 +162,7 @@ class MyCalculation
      * @param $rating       Ohodnocení incidentu.
      * @return int          Číslo priority incedentu.
      */
-    function calculatePriority(int $method, $rating)
+    function calculatePriority(int $method, $rating): int
     {
         $options = $this->file->getMethodParams($method);
         switch ($options['priority']['order']) {

@@ -5,7 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/AddController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AddController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/CalculationController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CalculationController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/MyCalculation.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyCalculation.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ChartsController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ChartsController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/TableController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/TableController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/MyCalculation.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyCalculation.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/MyDatabase.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyDatabase.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +51,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

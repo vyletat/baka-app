@@ -49,10 +49,10 @@ class TableController implements IController
     /**
      * Funkce pro odstraneni vsech zvolených incidentů.
      *
-     * @param $arrayId  Pole s ID incidentu ke smazani.
+     * @param array $arrayId  Pole s ID incidentu ke smazani.
      * @return bool     True, pokud je delete v databázi ok, jinak false.
      */
-    function deleteIncidents($arrayId)
+    function deleteIncidents(array $arrayId): bool
     {
         foreach ($arrayId as $id) {
             $ok = $this->db->deleteIncident($id);
