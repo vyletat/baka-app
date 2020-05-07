@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a99fd65-a9b0-40b6-ae22-20e2c780b680" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AddController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AddController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/CalculationController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CalculationController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/MyCalculation.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyCalculation.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/MyDatabase.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/MyDatabase.class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +51,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\baka-app\models" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -78,7 +87,8 @@
       <workItem from="1587040635918" duration="18841000" />
       <workItem from="1587111994500" duration="3504000" />
       <workItem from="1588702692862" duration="4813000" />
-      <workItem from="1588707635049" duration="402000" />
+      <workItem from="1588707635049" duration="2151000" />
+      <workItem from="1588835223877" duration="4752000" />
     </task>
     <task id="LOCAL-00001" summary="Config, file reader">
       <created>1587075990178</created>

@@ -14,6 +14,9 @@ class AddController implements IController
     /** @var MyFileHandler $file Sprava souboru. */
     private $file;
 
+    /** @var @MyCalculation $cal Sprava kalkulaci. */
+    private $cal;
+
     /**
      * Inicializace pripojeni k databazi.
      */
@@ -26,6 +29,10 @@ class AddController implements IController
         // inicializace prace se souborem
         require_once(DIRECTORY_MODELS . "/MyFileHandler.class.php");
         $this->file = new MyFileHandler();
+
+        //inicializace kalkulaci
+        require_once(DIRECTORY_MODELS . "/MyCalculation.class.php");
+        $this->cal = new MyCalculation();
     }
 
     //-------------------------------------------- START OF CALCULATION ------------------------------------------------
@@ -205,7 +212,7 @@ class AddController implements IController
      */
     function updateAllMethodsAndPriority()
     {
-        $allIncidents = $this->db->getIncident();
+        $allIncidents = $this->db->getIncidents();
         foreach ($allIncidents as $incident) {
             foreach (ALL_METHODS as $method) {
                 $rating = $this->calculateIncident($method, $incident['sla_time'], $incident['urgency'], $incident['reproductive'], $incident['project_phase'], $incident['number_of_effective_machines'], $incident['impact']);
@@ -371,10 +378,12 @@ class AddController implements IController
             if (isset($_GET['name'])) {
                 $name = $this->testInput($_GET['name']);
                 $ok = $this->db->addIncident($name, intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
-                $this->updateAllMethodsAndPriority();
+                $lastId = $this->db->getLastId();
+                $this->cal->calculateOneIncident(intval($lastId[0]['MAX(`id`)']));
             } else {
                 $ok = $this->db->addIncident('', intval($_GET['sla-time']), intval($_GET['urgency']), intval($_GET['reproductive']), intval($_GET['project-phase']), intval($_GET['number-of-affective-machines']), intval($_GET['impact']), intval($_GET['expected-priority']));
-                $this->updateAllMethodsAndPriority();
+                $lastId = $this->db->getLastId();
+                $this->cal->calculateOneIncident(intval($lastId[0]['MAX(`id`)']));
             }
             if ($ok) {
                 $tplData['add_status'] = true;
@@ -402,6 +411,8 @@ class AddController implements IController
             $incidents = $this->generateRandomIncident($_GET['generate-number']);
             foreach ($incidents as $incident) {
                 $ok = $this->db->addIncident($incident['name'], intval($incident['sla-time']), intval($incident['urgency']), intval($incident['reproductive']), intval($incident['project-phase']), intval($incident['number-of-affective-machines']), intval($incident['impact']), 1);
+                $lastId = $this->db->getLastId();
+                $this->cal->calculateOneIncident(intval($lastId[0]['MAX(`id`)']));
                 if ($ok) {
                     $tplData['add_generate_status'] = true;
                     $tplData['add_generate_alert'] = "<i class=\"far fa-laugh\"></i> <strong>" . $_GET['generate-number'] . "</strong> incedents was successfully added.";
@@ -412,7 +423,6 @@ class AddController implements IController
                     break;
                 }
             }
-            $this->updateAllMethodsAndPriority();
         }
 
         // vypsani prislusne sablony

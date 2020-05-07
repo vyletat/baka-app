@@ -14,6 +14,9 @@ class CalculationController implements IController
     /** @var MyFileHandler $file Sprava souboru. */
     private $file;
 
+    /** @var @MyCalculation $cal Sprava kalkulaci. */
+    private $cal;
+
     /**
      * Inicializace pripojeni k databazi.
      */
@@ -26,6 +29,10 @@ class CalculationController implements IController
         // inicializace prace se souborem
         require_once(DIRECTORY_MODELS . "/MyFileHandler.class.php");
         $this->file = new MyFileHandler();
+
+        //inicializace kalkulaci
+        require_once(DIRECTORY_MODELS . "/MyCalculation.class.php");
+        $this->cal = new MyCalculation();
     }
 
     /**
@@ -272,7 +279,7 @@ class CalculationController implements IController
      */
     function updateAllMethodsAndPriority()
     {
-        $allIncidents = $this->db->getIncident();
+        $allIncidents = $this->db->getIncidents();
         foreach ($allIncidents as $incident) {
             foreach (ALL_METHODS as $method) {
                 $rating = $this->calculateIncident($method, $incident['sla_time'], $incident['urgency'], $incident['reproductive'], $incident['project_phase'], $incident['number_of_effective_machines'], $incident['impact']);
@@ -316,7 +323,7 @@ class CalculationController implements IController
         if (isset($_POST['download'])) {
             if ($_POST['download'] == "xls") {
                 $headerArray = array('id', 'name', 'sla_time', 'urgency', 'reproductive', 'project_phase', 'number_of_effective_machines', 'impact', 'expected_priority', 'priority_1', 'priority_2', 'priority_3', 'priority_4', 'priority_5', 'priority_1_rating', 'priority_2_rating', 'priority_3_rating', 'priority_4_rating', 'priority_5_rating');
-                $arrayIncidents = $this->db->getIncident();
+                $arrayIncidents = $this->db->getIncidents();
                 $array = array();
                 array_push($array, $headerArray);
                 foreach ($arrayIncidents as $row) {
@@ -334,7 +341,7 @@ class CalculationController implements IController
 
         if (isset($_POST['refresh'])) {
             if ($_POST['refresh'] == true) {
-                $this->updateAllMethodsAndPriority();
+                $this->cal->updateAllMethodsAndPriority();
             }
         }
 

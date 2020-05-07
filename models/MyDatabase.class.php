@@ -194,7 +194,7 @@ class MyDatabase
      *
      * @return array    Vrátí pole s výsledky dotazu.
      */
-    public function getIncident()
+    public function getIncidents()
     {
         //ziskam celou tabulku urgency
         $incident = $this->selectFromTable(TABLE_INCIDENT, "", "");
@@ -634,6 +634,26 @@ FROM incident";
         $obj = $this->executeQuery($query);
         $res = $this->resultObjectToArray($obj);
         return $res;
+    }
+
+    /**
+     * Funkce pro vrácení největšího (posledního) ID incidentu.
+     *
+     * @return array
+     */
+    function getLastId()
+    {
+        $query = "SELECT MAX(`id`) FROM `incident`";
+        $obj = $this->executeQuery($query);
+        $res = $this->resultObjectToArray($obj);
+        return $res;
+    }
+
+    /**
+     * @return array
+     */
+    function getIncident(int $id) {
+        return $this->selectFromTable(TABLE_INCIDENT, "`id`=$id", "");
     }
 
     ///////////////////  KONEC: Konkretni funkce  ////////////////////////////////////////////

@@ -8,6 +8,26 @@
 class MyCalculation
 {
 
+    /** @var DatabaseModel $db Sprava databaze. */
+    private $db;
+
+    /** @var MyFileHandler $file Sprava souboru. */
+    private $file;
+
+    /**
+     * Inicializace pripojeni k databazi.
+     */
+    public function __construct()
+    {
+        // inicializace prace s DB
+        require_once("MyDatabase.class.php");
+        $this->db = new MyDatabase();
+
+        // inicializace prace se souborem
+        require_once("MyFileHandler.class.php");
+        $this->file = new MyFileHandler();
+    }
+
 //-------------------------------------------- START OF CALCULATION ------------------------------------------------
 
     /**
@@ -184,13 +204,28 @@ class MyCalculation
      */
     function updateAllMethodsAndPriority()
     {
-        $allIncidents = $this->db->getIncident();
+        $allIncidents = $this->db->getIncidents();
         foreach ($allIncidents as $incident) {
             foreach (ALL_METHODS as $method) {
                 $rating = $this->calculateIncident($method, $incident['sla_time'], $incident['urgency'], $incident['reproductive'], $incident['project_phase'], $incident['number_of_effective_machines'], $incident['impact']);
                 $priority = $this->calculatePriority($method, $rating);
                 $this->db->updateRatingAndPriority($incident['id'], $method, $rating, $priority);
             }
+        }
+    }
+
+    /**
+     * Funkce aktulizuje u vybraného incidentu v databázi vypočítaný rating a priority.
+     *
+     * @param int $id   ID incidentu, který chceme aktulizovat.
+     */
+    function calculateOneIncident(int $id) {
+        $incident = $this->db->getIncident($id);
+        $incident = $incident[0];
+        foreach (ALL_METHODS as $method) {
+            $rating = $this->calculateIncident($method, $incident['sla_time'], $incident['urgency'], $incident['reproductive'], $incident['project_phase'], $incident['number_of_effective_machines'], $incident['impact']);
+            $priority = $this->calculatePriority($method, $rating);
+            $this->db->updateRatingAndPriority($incident['id'], $method, $rating, $priority);
         }
     }
 
