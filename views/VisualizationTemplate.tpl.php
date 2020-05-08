@@ -27,8 +27,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <iframe width="933" height="700"
-                src="https://app.powerbi.com/view?r=eyJrIjoiZmNmZTk0NDYtNDY0MC00NjQ2LWJjOWQtNzhiOTM0Zjk2Y2RlIiwidCI6IjliZDVjNzY4LTkwYjgtNGU0Zi04NDE2LTE0NzcyOWQ5MWM1MyIsImMiOjl9"
+        <iframe width="1000" height="700"
+                src="https://app.powerbi.com/reportEmbed?reportId=639ed6fc-6023-412e-9f67-22bcf182cb47&autoAuth=true&ctid=96ae1ff8-6770-4bbc-b1f0-23209bf4d7d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWV1cm9wZS1ub3J0aC1iLXJlZGlyZWN0LmFuYWx5c2lzLndpbmRvd3MubmV0LyJ9"
                 frameborder="0" allowFullScreen="true"></iframe>
     </div>
 
