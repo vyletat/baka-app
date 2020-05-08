@@ -74,7 +74,7 @@
         <div class="row justify-content-center">
             <div class="col-auto">
                 <small>Tomáš Vyleta, <a href="mailto:vyleta.tom@gmail.com">vyletat@students.zcu.cz</a>,
-                    2019-2020</small>
+                    (c) 2019-2020</small>
             </div>
         </div>
         <div class="row justify-content-center">
