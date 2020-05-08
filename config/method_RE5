@@ -67,8 +67,8 @@
     }
   },
   "other": {
-    "name": "method",
+    "name": "Method RE",
     "method": "sum",
-    "dispersion": ""
+    "dispersion": "5"
   }
 }

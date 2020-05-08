@@ -214,7 +214,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-
+                            <h3>Diebold Nixdorf Method</h3>
+                            <p>Default method using by DN for support prioritization.</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">
@@ -397,7 +398,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-
+                            <h3>Method RS</h3>
+                            <p>Described in bachelor thesis.</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">
@@ -609,7 +611,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-
+                            <h3>Method RR</h3>
+                            <p>Described in bachelor thesis.</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">
@@ -820,7 +823,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-
+                            <h3>Method RS</h3>
+                            <p>Described in bachelor thesis.</p> <br>
+                            <p>dispersion = 3</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">
@@ -1031,7 +1036,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-
+                            <h3>Method ROC</h3>
+                            <p>Described in bachelor thesis.</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">

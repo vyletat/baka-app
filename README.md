@@ -1,6 +1,6 @@
 # Webová aplikace k bakalářské práci
 
-Tato webová alikace je vyvíjena k bakalářské práci na téma "Prioritizace zákazníků při poskytování SW podpory". Aplikace slouží pro správu incidentů a výpočet jejich priorit.
+Tato webová alikace je vyvíjena k bakalářské práci na téma "Prioritizace zákazníků při poskytování SW podpory". Aplikace slouží pro správu incidentů, výpočet jejich priorit a grafický přehled metod.
 
 # Autor
 
@@ -14,7 +14,7 @@ Západočeská univerzita (ZČU)
 Diebold Nixdorf, s.r.o. <br>
 https://www.dnpilsen.cz
 
-**Adresa:**
+**Adresa:** <br>
 Diebold Nixdorf, <br>
 Avalon Business Center - kancelář ve 3. patře, <br>
 Poděbradova 2842/1, <br>
@@ -34,30 +34,24 @@ Verze: 4.4.1
 
 XAMPP - https://www.apachefriends.org/index.html
 
+Přístup k internetu není požadován, ale aplikace obsahují CDN knihovny.
+
 ## Localhost
 1. Nainstalujte a spusťte XAMPP
-    * Spušťte Apache a MySQL server.
+    * Spušťte **Apache** a **MySQL** server (start).
 2. Vytvoření databáze
-    * Pomocí XAMPPu si otevřete MySQL panel. (admin)
-    * Klikněte na záložku SQL a do konzole zadejte kód ze souboru _.baka-app//sql/create_database.sql_
-    * NEBO ho importujte pomocí nástroje pro import.
-3. Složku (baka-app) s kódem programu zkopírujte do složky _./xampp/htdocs_
-4. Program je nyní připraven k použití, avšak bez incidentů v databázi.
+    * Pomocí XAMPPu si otevřete MySQL panel (admin).
+    * Aplikace pracuje s defaultním účtem MySQL (root).
+    * Klikněte na záložku SQL a do konzole zadejte celý kód ze souboru _.baka-app//sql/create_database.sql_ (Pro otevření použijte např. Notepad++)
+    * A klikněte na tlačítko " Proveď ".
+3. Složku (baka-app) s kódem programu zkopírujte do složky _./xampp/htdocs_ (složka se nachází tam, kam jste si nainstalovali XAMPP)
+4. Program je nyní připraven k použití, avšak bez incidentů v databázi
     * Můžete zadat/vygenerovat vlastní incidenty pomocí aplikace.
     * Můžete podle stejného postupu jako je uveden 2. bodě naplnit databázi testovacími incidenty ze souboru _./baka-app/sql/insert_test_incidents.sql_
   
-# Prostředí
-Uživatelskou dokumentaci lze nalézt v souboru _./baka-app/_
+# Dokumentace
+Uživatelskou dokumentaci lze nalézt v souboru _./baka-app/doc/uziv_doc.pdf_ <br>
+Dokumentaci pro nakonfigurování hodnot v souboru _./baka-app/doc/json_doc.pdf_ <br>
+Aplikační dokumentace je vygenerována jako HTML stránky a odkaz na ni je ve zápatí stránky (Documentation).
 
-## Domovská stránka
-
-## Přidání incidentu
-
-## Tabulka s incidenty
-
-## Kalkulace
-
-## Koláčové grafy
-
-
-Licence MIT
+Copyright (c) 2020 Tomáš Vyleta, MIT Licence

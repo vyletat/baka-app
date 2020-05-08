@@ -63,7 +63,7 @@
                 </li>
                 <!-- Code documentation of the app -->
                 <li>
-                    <a href="" target="_blank"><i class="fas fa-book"></i> Documentation</a>
+                    <a href="./doc/html/index.html" target="_blank"><i class="fas fa-book"></i> Documentation</a>
                 </li>
             </ul>
         </div>

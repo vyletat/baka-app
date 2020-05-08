@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['generatedateandnumber_95',['generateDateAndNumber',['../class_add_controller.html#ac248d18185532d200bb1f9880f11497b',1,'AddController']]],
+  ['generateincident_96',['generateIncident',['../class_add_controller.html#abdbf53340138b81cca4183ff7fe0f781',1,'AddController']]],
+  ['generaterandomincident_97',['generateRandomIncident',['../class_add_controller.html#a86eb5b1dc33207d7e983e3104adb018c',1,'AddController']]],
+  ['getallusers_98',['getAllUsers',['../class_my_database.html#a48a9c3492291c38e6113e40e04deb2ed',1,'MyDatabase']]],
+  ['getcountincident_99',['getCountIncident',['../class_my_database.html#a8b3b35254a4049f7d406e3db3de0b1b3',1,'MyDatabase']]],
+  ['getcountofincedents_100',['getCountOfIncedents',['../class_charts_controller.html#ad977af19ed52b48139dd0245e7715dd8',1,'ChartsController']]],
+  ['getdata_101',['getData',['../class_charts_controller.html#a81a67162a6288d78fc4c55283325f0b4',1,'ChartsController']]],
+  ['getimpact_102',['getImpact',['../class_my_database.html#ab8c18f702107574f1fea70e9f7fa1b70',1,'MyDatabase']]],
+  ['getincident_103',['getIncident',['../class_my_database.html#ade6a8bcc62d11b2d2c65a80df96a34c0',1,'MyDatabase']]],
+  ['getincidents_104',['getIncidents',['../class_my_database.html#a4665fb16562e45d39ebd89351045ee88',1,'MyDatabase']]],
+  ['getlastid_105',['getLastId',['../class_my_database.html#acfbb152e6d905b20476e63a2ec273f0c',1,'MyDatabase']]],
+  ['getmethodparams_106',['getMethodParams',['../class_my_file_handler.html#a279ba23a001212ab2199b4cda99f40da',1,'MyFileHandler']]],
+  ['getnumberofaffectivemachines_107',['getNumberOfAffectiveMachines',['../class_my_database.html#adf512bb56eb8de1e17dd496353511452',1,'MyDatabase']]],
+  ['getpriority_108',['getPriority',['../class_my_database.html#a1e7a3c168dcd0901a0d2669c67575b55',1,'MyDatabase']]],
+  ['getprojectphase_109',['getProjectPhase',['../class_my_database.html#a3201e8080db147beef036993cbb1fd13',1,'MyDatabase']]],
+  ['getreproductive_110',['getReproductive',['../class_my_database.html#a086c2be93359a0defbf92ef3a4369cb9',1,'MyDatabase']]],
+  ['geturgency_111',['getUrgency',['../class_my_database.html#a0fc2886ce5046b615dbe106ab1b3bd69',1,'MyDatabase']]]
+];
