@@ -49,7 +49,7 @@ Přístup k internetu není požadován, ale aplikace obsahují CDN knihovny.
     * Můžete zadat/vygenerovat vlastní incidenty pomocí aplikace.
     * Můžete podle stejného postupu jako je uveden 2. bodě naplnit databázi testovacími incidenty ze souboru _./baka-app/sql/insert_test_incidents.sql_
 5. Otevřete si webový prohlížeč a zadejte adresu: _localhost/baka-app_
-    * Pokud nefunguje baka-app, tomuto názvu odpovídá název složky ve složce htdocs, kde máte složku s kódem aplikace
+    * Pokud nefunguje baka-app, tak tomuto názvu odpovídá název složky ve složce htdocs, kde máte složku s kódem aplikace
   
 # Dokumentace
 Uživatelskou dokumentaci lze nalézt v souboru _./baka-app/doc/uziv_doc.pdf_ <br>
