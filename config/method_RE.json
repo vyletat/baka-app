@@ -2,8 +2,8 @@
   "priority": {
     "order": "desc",
     "normalize": true,
-    "min": 0.122297556,
-    "max":0.608458849,
+    "min": 0.075933981,
+    "max":0.690611573,
     "scale": {
       "very_high": 1.0,
       "high": 0.55,
@@ -14,55 +14,55 @@
   "criteria": {
     "sla_time": {
       "contains": true,
-      "weight": 0.237699238
+      "weight": 0.342571142
     },
     "urgency": {
       "contains": true,
-      "weight": 0.205333539,
+      "weight": 0.260602697,
       "attributes": {
-        "highest": 0.386996904,
-        "high": 0.282120743,
-        "medium": 0.198142415,
-        "low": 0.132739938
+        "highest": 0.469908815,
+        "high": 0.305214728,
+        "medium": 0.166137855,
+        "low": 0.058738602
       }
     },
     "number_of_affective_machines": {
       "contains": true,
-      "weight": 0.14968815,
+      "weight": 0.121117189,
       "attributes": {
-        "more_than_1000": 0.296703297,
-        "101-1000": 0.241230769,
-        "11-100": 0.193142857,
-        "2-10": 0.151912088,
-        "one": 0.117010989
+        "more_than_1000": 0.396396803,
+        "101-1000": 0.283638463,
+        "11-100": 0.184228586,
+        "2-10": 0.10028134,
+        "one": 0.035454808
       }
     },
     "impact": {
       "contains": true,
-      "weight": 0.176047843,
+      "weight": 0.186472111,
       "attributes": {
-        "critical": 0.771428571,
-        "non-critical": 0.228571429
+        "critical": 0.738796125,
+        "non-critical": 0.261203875
       }
     },
     "project_phase": {
       "contains": true,
-      "weight": 0.126100459,
+      "weight": 0.065927847,
       "attributes": {
-        "production": 0.237699238,
-        "pilot": 0.205333539,
-        "uat": 0.176047843,
-        "certification": 0.14968815,
-        "sit": 0.126100459,
-        "internal_qa": 0.105130772
+        "production": 0.342571142,
+        "pilot": 0.260602697,
+        "uat": 0.186472111,
+        "certification": 0.121117189,
+        "sit": 0.065927847,
+        "internal_qa": 0.023309014
       }
     },
     "reproducibility": {
       "contains": true,
-      "weight": 0.105130772,
+      "weight": 0.023309014,
       "attributes": {
-        "yes": 0.771428571,
-        "no": 0.228571429
+        "yes": 0.738796125,
+        "no": 0.261203875
       }
     }
   },
