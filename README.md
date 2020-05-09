@@ -54,8 +54,8 @@ Přístup k internetu není požadován, ale aplikace obsahují CDN knihovny.
  Videonávod: https://www.youtube.com/watch?v=veWmHx3DxFY&feature=youtu.be
   
 # Dokumentace
-Uživatelskou dokumentaci lze nalézt v souboru _./baka-app/doc/uziv_doc.pdf_ <br>
-Dokumentaci pro nakonfigurování hodnot v souboru _./baka-app/doc/json_doc.pdf_ <br>
+Uživatelskou dokumentaci lze nalézt v souboru _./baka-app-master/doc/uziv_doc.pdf_ <br>
+Dokumentaci pro nakonfigurování hodnot v souboru _./baka-app-master/doc/json_doc.pdf_ <br>
 Aplikační dokumentace je vygenerována jako HTML stránky a odkaz na ni je ve zápatí stránky (Documentation).
 
 Copyright (c) 2020 Tomáš Vyleta, MIT Licence
