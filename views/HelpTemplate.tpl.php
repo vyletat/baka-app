@@ -418,63 +418,63 @@
                                     <td>SLA time</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,189189189</td>
+                                    <td>0,285714286</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td>Urgency</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,18018018</td>
+                                    <td>0,238095238</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Highest</td>
-                                    <td>0,294117647</td>
+                                    <td>0,4</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>High</td>
-                                    <td>0,264705882</td>
+                                    <td>0,3</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>3.</td>
                                     <td>Medium</td>
-                                    <td>0,235294118</td>
+                                    <td>0,2</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>Low</td>
-                                    <td>0,205882353</td>
+                                    <td>0,1</td>
                                 </tr>
                                 <tr>
                                     <td>4.</td>
                                     <td>NoAM</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,162162162</td>
+                                    <td>0,142857143</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>> 1000</td>
-                                    <td>0,230769231</td>
+                                    <td>0,333333333</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>101 - 1000</td>
-                                    <td>0,215384615</td>
+                                    <td>0,266666667</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
@@ -488,105 +488,105 @@
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>2 - 10</td>
-                                    <td>0,184615385</td>
+                                    <td>0,133333333</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>5.</td>
                                     <td>1</td>
-                                    <td>0,169230769</td>
+                                    <td>0,066666667</td>
                                 </tr>
                                 <tr>
                                     <td>3.</td>
                                     <td>Impact</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,171171171</td>
+                                    <td>0,19047619</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Critical</td>
-                                    <td>0,6</td>
+                                    <td>0,666666667</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>Non-critical</td>
-                                    <td>0,4</td>
+                                    <td>0,333333333</td>
                                 </tr>
                                 <tr>
                                     <td>5.</td>
                                     <td>Project Phase</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,153153153</td>
+                                    <td>0,095238095</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Production</td>
-                                    <td>0,189189189</td>
+                                    <td>0,285714286</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>Pilot</td>
-                                    <td>0,18018018</td>
+                                    <td>0,238095238</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>3.</td>
                                     <td>UAT</td>
-                                    <td>0,171171171</td>
+                                    <td>0,19047619</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>Certification</td>
-                                    <td>0,162162162</td>
+                                    <td>0,142857143</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>5.</td>
                                     <td>SIT</td>
-                                    <td>0,153153153</td>
+                                    <td>0,095238095</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>6.</td>
                                     <td>Internal QA</td>
-                                    <td>0,144144144</td>
+                                    <td>0,047619048</td>
                                 </tr>
                                 <tr>
                                     <td>6.</td>
                                     <td>Reproducibility</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,144144144</td>
+                                    <td>0,047619048</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Yes</td>
-                                    <td>0,6</td>
+                                    <td>0,666666667</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>No</td>
-                                    <td>0,4</td>
+                                    <td>0,333333333</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -825,7 +825,7 @@
                         <div class="col-sm-6">
                             <h3>Method RS</h3>
                             <p>Described in bachelor thesis.</p> <br>
-                            <p>dispersion = 3</p>
+                            <p>dispersion = 1,5</p>
                         </div>
                         <div class="col-sm-6">
                             <table class="table table-striped">
@@ -844,175 +844,175 @@
                                     <td>SLA time</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,289279137</td>
+                                    <td>0,342571142</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td>Urgency</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,226657773</td>
+                                    <td>0,260602697</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Highest</td>
-                                    <td>0,479331237</td>
+                                    <td>0,469908815</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>High</td>
-                                    <td>0,283040302</td>
+                                    <td>0,305214728</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>3.</td>
                                     <td>Medium</td>
-                                    <td>0,15706726</td>
+                                    <td>0,166137855</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>Low</td>
-                                    <td>0,080561201</td>
+                                    <td>0,058738602</td>
                                 </tr>
                                 <tr>
                                     <td>4.</td>
                                     <td>NoAM</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,133839148</td>
+                                    <td>0,121117189</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>> 1000</td>
-                                    <td>0,36536958</td>
+                                    <td>0,396396803</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>101 - 1000</td>
-                                    <td>0,258771396</td>
+                                    <td>0,283638463</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>3.</td>
                                     <td>11 - 100</td>
-                                    <td>0,178645817</td>
+                                    <td>0,184228586</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>2 - 10</td>
-                                    <td>0,119724304</td>
+                                    <td>0,10028134</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>5.</td>
                                     <td>1</td>
-                                    <td>0,077488904</td>
+                                    <td>0,035454808</td>
                                 </tr>
                                 <tr>
                                     <td>3.</td>
                                     <td>Impact</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,175383464</td>
+                                    <td>0,186472111</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Critical</td>
-                                    <td>0,883636364</td>
+                                    <td>0,738796125</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>Non-critical</td>
-                                    <td>0,116363636</td>
+                                    <td>0,261203875</td>
                                 </tr>
                                 <tr>
                                     <td>5.</td>
                                     <td>Project Phase</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,100569258</td>
+                                    <td>0,065927847</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Production</td>
-                                    <td>0,289279137</td>
+                                    <td>0,342571142</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>Pilot</td>
-                                    <td>0,226657773</td>
+                                    <td>0,260602697</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>3.</td>
                                     <td>UAT</td>
-                                    <td>0,175383464</td>
+                                    <td>0,186472111</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>4.</td>
                                     <td>Certification</td>
-                                    <td>0,133839148</td>
+                                    <td>0,121117189</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>5.</td>
                                     <td>SIT</td>
-                                    <td>0,100569258</td>
+                                    <td>0,065927847</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>6.</td>
                                     <td>Internal QA</td>
-                                    <td>0,074271219</td>
+                                    <td>0,023309014</td>
                                 </tr>
                                 <tr>
                                     <td>6.</td>
                                     <td>Reproducibility</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>0,074271219</td>
+                                    <td>0,023309014</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>1.</td>
                                     <td>Yes</td>
-                                    <td>0,883636364</td>
+                                    <td>0,738796125</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>2.</td>
                                     <td>No</td>
-                                    <td>0,116363636</td>
+                                    <td>0,261203875</td>
                                 </tr>
                                 </tbody>
                             </table>
