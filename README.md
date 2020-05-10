@@ -42,20 +42,20 @@ Přístup k internetu není požadován, ale aplikace obsahují CDN knihovny.
 2. Vytvoření databáze
     * Pomocí XAMPPu si otevřete MySQL panel (admin).
     * Aplikace pracuje s defaultním účtem MySQL (root).
-    * Klikněte na záložku SQL a do konzole zadejte celý kód ze souboru _.baka-app//sql/create_database.sql_ (Pro otevření použijte např. Notepad++)
+    * Klikněte na záložku SQL a do konzole zadejte celý kód ze souboru _.baka-app-master/sql/create_database.sql_ (Pro otevření použijte např. Notepad++)
     * A klikněte na tlačítko " Proveď ".
 3. Složku (baka-app) s kódem programu zkopírujte do složky _./xampp/htdocs_ (složka se nachází tam, kam jste si nainstalovali XAMPP)
 4. Program je nyní připraven k použití, avšak bez incidentů v databázi
     * Můžete zadat/vygenerovat vlastní incidenty pomocí aplikace.
-    * Můžete podle stejného postupu jako je uveden 2. bodě naplnit databázi testovacími incidenty ze souboru _./baka-app/sql/insert_test_incidents.sql_
-5. Otevřete si webový prohlížeč a zadejte adresu: _localhost/baka-app_
-    * Pokud nefunguje baka-app, tak tomuto názvu odpovídá název složky ve složce htdocs, kde máte složku s kódem aplikace
+    * Můžete podle stejného postupu jako je uveden 2. bodě naplnit databázi testovacími incidenty ze souboru _./baka-app-master/sql/insert_test_incidents.sql_
+5. Otevřete si webový prohlížeč a zadejte adresu: _localhost/baka-app-master_
+    * Pokud nefunguje baka-app-master, tak tomuto názvu odpovídá název složky ve složce htdocs, kde máte složku s kódem aplikace
     
  Videonávod: https://www.youtube.com/watch?v=veWmHx3DxFY&feature=youtu.be
   
 # Dokumentace
-Uživatelskou dokumentaci lze nalézt v souboru _./baka-app/doc/uziv_doc.pdf_ <br>
-Dokumentaci pro nakonfigurování hodnot v souboru _./baka-app/doc/json_doc.pdf_ <br>
+Uživatelskou dokumentaci lze nalézt v souboru _./baka-app-master/doc/uziv_doc.pdf_ <br>
+Dokumentaci pro nakonfigurování hodnot v souboru _./baka-app-master/doc/json_doc.pdf_ <br>
 Aplikační dokumentace je vygenerována jako HTML stránky a odkaz na ni je ve zápatí stránky (Documentation).
 
 Copyright (c) 2020 Tomáš Vyleta, MIT Licence
